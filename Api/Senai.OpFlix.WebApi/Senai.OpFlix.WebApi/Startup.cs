@@ -34,6 +34,16 @@ namespace Senai.OpFlix.WebApi
                     Version = "v1"
                 });
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "JwtBearer";
@@ -74,6 +84,9 @@ namespace Senai.OpFlix.WebApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "OpFlix API V1");
             });
+
+            app.UseCors("CorsPolicy");
+
             app.UseMvc();
         }
     }

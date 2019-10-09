@@ -14,11 +14,11 @@ class App extends Component {
     }
   }
 
-  mudarEstadoEmail = (event) => {
+  loginEmail = (event) => {
     this.setState({ email: event.target.value })
   }
 
-  mudarEstadoSenha = (event) => {
+  loginSenha = (event) => {
     this.setState({ senha: event.target.value })
   }
 
@@ -27,7 +27,7 @@ class App extends Component {
 
     Axios.post("http://localhost:5000/api/login", {
       email: this.state.email,
-      senha: this.state.senha
+      senha: this.state.senha,
     })
       .then(data => {
         if (data.status === 200) {
@@ -49,36 +49,42 @@ class App extends Component {
       <div className="App" >
         <header className="App-header">
           <nav className="Nav">
+            {/* {logo}; */}
             <h1 style={{ color: "red", fontFamily: "Cooper" }} className="h1">OpFlix</h1>
           </nav>
-          <div>
+          <div className="divForm">
+
             <form onSubmit={this.efetuarLogin} className="form">
+              <h3>Login</h3>
+              <br></br>
               <div className="item">
                 <input
                   className="input__login"
-                  placeholder="Username"
+                  placeholder="Email"
                   type="text"
                   name="username"
                   id="login__email"
-                  onChange={this.mudarEstadoEmail}
+                  onChange={this.loginEmail}
                   value={this.state.email}
-                />
+                /> 
               </div>
+              <br></br>
               <div className="item">
                 <input
                   className="input__login"
-                  placeholder="Password"
+                  placeholder="Senha"
                   type="password"
                   name="password"
                   id="login__password"
-                  onChange={this.mudarEstadoSenha}
+                  onChange={this.loginSenha}
                   value={this.state.senha}
                 />
               </div>
+              <br></br>
               <div className="item">
-                <button className="btn btn__login" id="btn__login">
+              <button className="btn btn__login" id="btn__login" style={{backgroundcolor: "red"}}>
                   Login
-              </button>
+              </button >
               </div>
               <p
                 className="text__login"

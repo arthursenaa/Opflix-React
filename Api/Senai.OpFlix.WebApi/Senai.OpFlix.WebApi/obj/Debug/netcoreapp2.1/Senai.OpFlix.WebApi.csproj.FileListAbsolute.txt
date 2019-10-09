@@ -40,3 +40,17 @@ C:\Users\44761640804\Desktop\OpFlix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.W
 C:\Users\44761640804\Desktop\OpFlix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.RazorTargetAssemblyInfo.cache
 C:\Users\44761640804\Desktop\OpFlix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.dll
 C:\Users\44761640804\Desktop\OpFlix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.pdb
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.dll
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.pdb
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\bin\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.deps.json
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\bin\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.runtimeconfig.json
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\bin\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.runtimeconfig.dev.json
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\bin\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.dll
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\bin\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.pdb
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.csprojAssemblyReference.cache
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.csproj.CoreCompileInputs.cache
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.RazorAssemblyInfo.cache
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.RazorAssemblyInfo.cs
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.AssemblyInfoInputs.cache
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.AssemblyInfo.cs
+C:\Users\44761640804\Desktop\OpFlix-React\Opflix-React\Api\Senai.OpFlix.WebApi\Senai.OpFlix.WebApi\obj\Debug\netcoreapp2.1\Senai.OpFlix.WebApi.RazorTargetAssemblyInfo.cache
