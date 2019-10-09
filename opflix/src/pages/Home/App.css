@@ -1,0 +1,31 @@
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-image: url('./img/netflix.jpg');
+  min-height: 100vh;
+ 
+}
+
+.Nav{
+  opacity : 0.8 ;
+  background-color: #282c34;
+  height: 2.5em;
+  /* margin-top: -1.31em; */
+}
+
+.h1{
+  position: absolute;
+  margin-left: 3%;
+  margin-top: 0.7%; 
+}
+
+.form {
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
