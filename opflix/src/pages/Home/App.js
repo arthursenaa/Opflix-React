@@ -27,7 +27,7 @@ class App extends Component {
 
     Axios.post("http://localhost:5000/api/login", {
       email: this.state.email,
-      senha: this.state.senha,
+      senha: this.state.senha
     })
       .then(data => {
         if (data.status === 200) {
@@ -50,7 +50,7 @@ class App extends Component {
         <header className="App-header">
           <nav className="Nav">
             {/* {logo}; */}
-            <h1 style={{ color: "red", fontFamily: "Cooper" }} className="h1">OpFlix</h1>
+            <h1 style={{ color: "red", fontFamily: "Cooper", fontSize: "2.5em" }} className="h1">OpFlix</h1>
           </nav>
           <div className="divForm">
 
@@ -66,7 +66,7 @@ class App extends Component {
                   id="login__email"
                   onChange={this.loginEmail}
                   value={this.state.email}
-                /> 
+                />
               </div>
               <br></br>
               <div className="item">
@@ -82,7 +82,7 @@ class App extends Component {
               </div>
               <br></br>
               <div className="item">
-              <button className="btn btn__login" id="btn__login" style={{backgroundcolor: "red"}}>
+                <button className="btn btn__login" id="btn__login" style={{ backgroundcolor: "red" }}>
                   Login
               </button >
               </div>
@@ -92,6 +92,7 @@ class App extends Component {
               >
                 {this.state.erro}
               </p>
+              <p style={{ fontSize: "0.6em" }}><a href="/Cadastro"> Cadastrar-se</a></p>
             </form>
           </div>
         </header>

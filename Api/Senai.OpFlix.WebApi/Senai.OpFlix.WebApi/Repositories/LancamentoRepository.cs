@@ -17,7 +17,7 @@ namespace Senai.OpFlix.WebApi.Repositories
 
         public List<Lancamento> ListarLancamentos()
         {
-            return ctx.Lancamento.ToList();
+            return ctx.Lancamento.Include(x => x.IdGeneroNavigation).ToList();
         }
 
 

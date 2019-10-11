@@ -51,4 +51,4 @@ drop table Plataforma
 drop table Favorito
 drop table Lancamento
 
-alter
+select * from Usuario

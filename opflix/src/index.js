@@ -5,6 +5,7 @@ import './index.css';
 //paginas
 import App from './pages/Home/App';
 import Filmes from './pages/Filmes/Filmes';
+import Cadastro from './pages/Cadastro/Cadastrar';
 
 
 import NaoEncontrado from "./pages/NaoEncontrado/NaoEncontrado";
@@ -35,6 +36,7 @@ const routing = (
         <div>
             <Switch>
                 <Route exact path='/' component={App} />
+                <Route exact path='/Cadastro' component={Cadastro} />
                 <RotaLogin path='/Filmes' component={Filmes} />
                 {/* <Route exact path='/Filmes' component={Filmes} /> */}
                 <Route component={NaoEncontrado}/>
