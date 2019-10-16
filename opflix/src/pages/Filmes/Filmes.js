@@ -13,23 +13,24 @@ export default class Filmes extends Component {
     constructor() {
         super();
         this.state = {
-            filmes: [ ],
-            id: ""
+            filmes: [],
+            id: "",
+            sinopse: "",
+            generoNome: [],
+            generos: []
         }
     }
+
     //Tabela Filme
     listarFilme = () => {
-        
-        Axios.get('http://localhost:5000/api/lancamento')
-            .then(response => {
-                this.setState({lista: response.data})
-            })
-
-        // fetch('http://localhost:5000/api/lancamento')
-        //     .then(response => response.json())
-        //     .then(data => this.setState({ filmes: data}));
-            
-        console.log(this.state.filmes)
+        fetch('http://localhost:5000/api/lancamento', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => this.setState({ filmes: data }));
     }
 
     componentDidMount() {
@@ -37,10 +38,9 @@ export default class Filmes extends Component {
     }
 
 
-
     render() {
         return (
-            <div style={{backgroundColor:"#1C1C1C"}}>
+            <div style={{ backgroundColor: "#1C1C1C" }}>
                 <Menu />
                 <br></br>
                 <br></br>
@@ -51,22 +51,28 @@ export default class Filmes extends Component {
                     <div id="Filmes">
                         <Table striped bordered hover variant="dark">
                             <thead>
+                                
                                 <tr>
                                     <th>#</th>
                                     <th>Filme</th>
                                     <th>Duração</th>
-                                    <th>Genero</th>
-                                    <th>Plataforma</th>
+                                    {/* <th>Genero</th> */}
+                                    <th>Tipo</th>
+                                    <th>Classificação</th>
+                                    <th>Sinopse</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.filmes.map(element => {   
-                                    console.log(this.state.filmes)
+                                {this.state.filmes.map(element => {
                                     return (
                                         <tr key={element.idLancamentos}>
+                                            <td>{element.idLancamentos}</td>
                                             <td>{element.nome}</td>
                                             <td>{element.duracao}</td>
-                                            <td>{element.genero.nome}</td>
+                                            {/* <td>{element.idGeneroNavigation.nome}</td> */}
+                                            <td>{element.idTipoNavigation.tipo1}</td>
+                                            <td>{element.classificacaoIndicativa}</td>
+                                            <td>{element.sinopse}</td>
                                         </tr>
                                     );
                                 })}
