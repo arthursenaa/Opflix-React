@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './img/Capturar.png';
 import Axios from 'axios';
 import './App.css';
+import { parseJwt } from "../../services/auth";
 
 class App extends Component {
 
@@ -32,7 +33,12 @@ class App extends Component {
       .then(data => {
         if (data.status === 200) {
           localStorage.setItem("usuario-opflix", data.data.token);
-          this.props.history.push('/Filmes');
+          // var permissao = parseJwt().permissao;
+          if ( parseJwt().permissao === '2') {
+            this.props.history.push('/CadastrarAdm');
+          } else {
+            this.props.history.push('/Filmes');
+          }
         } else {
           console.log("Erroooo")
         }
@@ -42,6 +48,7 @@ class App extends Component {
         console.log(erro);
       })
   }
+
 
 
   render() {

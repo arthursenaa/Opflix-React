@@ -17,7 +17,7 @@ namespace Senai.OpFlix.WebApi.Repositories
 
         public List<Lancamento> ListarLancamentos()
         {
-            return ctx.Lancamento.Include(x => x.IdGeneroNavigation).ToList();
+            return ctx.Lancamento.Include(x => x.IdTipoNavigation).Include(y => y.IdGeneroNavigation).ToList();
         }
 
 
@@ -58,12 +58,12 @@ namespace Senai.OpFlix.WebApi.Repositories
         //1-) Usuario Podera Filtrar Por Data
         public List<Lancamento> BuscarPorDataC()
         {
-            return ctx.Lancamento.FromSql("Select * from Lancamento order by DataLancamento asc").ToList();
+            return ctx.Lancamento.FromSql("Select Top(5) * from Lancamento order by DataLancamento asc").ToList();
         }
 
         public List<Lancamento> BuscarPorDataD()
         {
-            return ctx.Lancamento.FromSql("Select * from Lancamento order by DataLancamento desc").ToList();
+            return ctx.Lancamento.FromSql("Select Top(5) * from Lancamento order by DataLancamento desc").ToList();
         }
     }
 }

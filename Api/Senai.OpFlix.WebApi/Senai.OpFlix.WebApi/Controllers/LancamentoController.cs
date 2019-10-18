@@ -63,7 +63,7 @@ namespace Senai.OpFlix.WebApi.Controllers
         }
 
         
-        [Authorize(Roles = "2")]
+        //[Authorize(Roles = "2")]
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {

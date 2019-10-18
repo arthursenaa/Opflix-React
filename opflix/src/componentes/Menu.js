@@ -11,9 +11,10 @@ function Menu() {
             <Navbar.Brand href="/" style={{ color: "red", fontFamily: "Cooper", fontSize: "2em" }}>Opflix</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    <Nav.Link href="#Filmes" >Lista de Filmes</Nav.Link>
-                    <Nav.Link href="#Generos" >Listar Generos</Nav.Link>
+                <Nav className="mr-auto" >
+                    <Nav.Link href="#Filmes" style={{fontSize:"Large"}}>Lista de Filmes</Nav.Link>
+                    <Nav.Link href="#Ultimos" style={{fontSize:"Large"}}>Ultimos Lançamentos</Nav.Link>
+                    <Nav.Link href="#Antigos" style={{fontSize:"Large"}}>Mais Antigos </Nav.Link>
                     {/* <Nav.Link href="/Home">Pricing</Nav.Link> */}
                 </Nav>
                 

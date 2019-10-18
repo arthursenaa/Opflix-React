@@ -18,7 +18,7 @@ namespace Senai.OpFlix.WebApi.Controllers
 
         CategoriaRepository CategoriaRepository = new CategoriaRepository();
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public IActionResult Listar()
         {

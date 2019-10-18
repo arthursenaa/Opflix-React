@@ -3,9 +3,8 @@ import logo from '../../assets/img/Capturar.png';
 import Menu from '../../componentes/Menu.js';
 import Axios from 'axios';
 
-import { Accordion, Card, Button, Table } from 'react-bootstrap';
-import './Filmes.css';
-import { parseJwt } from '../../services/auth';
+import { Accordion, Card, Button, Table, ButtonToolbar } from 'react-bootstrap';
+// import './Filmes.css';
 
 
 
@@ -20,7 +19,8 @@ export default class Filmes extends Component {
             generos: [],
             filmeGenero: [],
             idgenero: "",
-            permissao: parseJwt().permissao
+            codigoExcluir: "",
+            IdTipoUsuario: ""
             // sinopse: "",
             // generoNome: [],
         }
@@ -63,7 +63,6 @@ export default class Filmes extends Component {
     }
     //Por Genero
     listarGenero = () => {
-        // eventDefault();
         fetch('http://localhost:5000/api/categoria', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
@@ -74,7 +73,23 @@ export default class Filmes extends Component {
             .then(data => this.setState({ generos: data }));
     }
 
+    idExcluir = (event) => {
+        this.setState({ codigoExcluir: event.target.value })
+        console.log(this.state.codigoExcluir)
+      }
+
+    excluirFilme = () => {
+        Axios.delete('http://localhost:5000/api/lancamento/' + this.state.codigoExcluir ,{
+
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
+                'Content-Type': 'application/json'
+            },
+        })
+    }
+
     componentDidMount() {
+        // this.setState({IdTipoUsuario: parseJwt().IdTipoUsuario});
         this.listarFilme();
         this.ultimosLancamentos();
         this.maisAntigos();
@@ -84,7 +99,7 @@ export default class Filmes extends Component {
 
     render() {
         return (
-            <div style={{ backgroundColor: "#1C1C1C"}}>
+            <div style={{ backgroundColor: "#1C1C1C" }}>
                 <Menu />
                 <br></br>
                 <br></br>
@@ -94,24 +109,22 @@ export default class Filmes extends Component {
                 <div className="divFilme">
                     <Accordion defaultActiveKey="0">
                         <Card>
-                            <Card.Header  style={{backgroundColor:"Black"}}>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="0" style={{color:"white"}}>
-                                    Listar Filmes
+                            <Card.Header style={{ backgroundColor: "Black" }}>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="0" style={{ color: "white" }}>
+                                    Todos os Filmes (Excluir ou Atualizar)
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
                                 <Card.Body>
-                                    <div id="Filmes">                                  
+                                    <div id="Filmes">
                                         <Table striped bordered hover variant="dark">
-                                            <thead>       
+                                            <thead>
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Filme</th>
-                                                    <th>Duração</th>
-                                                    {/* <th>Genero</th> */}
-                                                    <th>Tipo</th>
-                                                    <th>Classificação</th>
-                                                    <th>Sinopse</th>
+                                                    <th>Excluir</th>
+                                                    <th>Atualizar</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -120,11 +133,8 @@ export default class Filmes extends Component {
                                                         <tr key={element.idLancamentos}>
                                                             <td>{element.idLancamentos}</td>
                                                             <td>{element.nome}</td>
-                                                            <td>{element.duracao}</td>
-                                                            {/* <td>{element.idGeneroNavigation.nome}</td> */}
-                                                            <td>{element.idTipoNavigation.tipo1}</td>
-                                                            <td>{element.classificacaoIndicativa}</td>
-                                                            <td>{element.sinopse}</td>
+                                                            <td><button onClick={this.idExcluir} >Excluir</button></td>
+                                                            <td><button>Atualizar</button></td>
                                                         </tr>
                                                     );
                                                 })}
@@ -138,8 +148,8 @@ export default class Filmes extends Component {
                         <br></br>
                         <br></br>
                         <Card>
-                            <Card.Header style={{backgroundColor:"Black"}}>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="1" style={{color:"white"}}>
+                            <Card.Header style={{ backgroundColor: "Black" }}>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="1" style={{ color: "white" }}>
                                     Ultimos Lançamentos
                                 </Accordion.Toggle>
                             </Card.Header>
@@ -184,8 +194,8 @@ export default class Filmes extends Component {
                         <br></br>
                         <br></br>
                         <Card>
-                            <Card.Header style={{backgroundColor:"Black"}}>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="2" style={{color:"white"}}>
+                            <Card.Header style={{ backgroundColor: "Black" }}>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="2" style={{ color: "white" }}>
                                     Mais Antigos
                                 </Accordion.Toggle>
                             </Card.Header>
@@ -231,20 +241,20 @@ export default class Filmes extends Component {
                         <br></br>
                         <br></br>
                         <Card>
-                            <Card.Header  style={{backgroundColor:"Black"}}>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="4" style={{color:"white"}}>
+                            <Card.Header style={{ backgroundColor: "Black" }}>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="4" style={{ color: "white" }}>
                                     Listar Por Genero
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="4">
                                 <Card.Body>
-                                    <div id="Filmes">                                  
+                                    <div id="Filmes">
                                         <Table striped bordered hover variant="dark">
-                                            <thead>       
+                                            <thead>
                                                 <select onchange="listarGenero()">
-                                                    {this.state.generos.map(element =>{
-                                                        return(
-                                                            <option>{element.nome}</option> 
+                                                    {this.state.generos.map(element => {
+                                                        return (
+                                                            <option>{element.nome}</option>
                                                         );
                                                     })}
                                                 </select>
@@ -279,17 +289,6 @@ export default class Filmes extends Component {
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
-
-
-
-
-
-
-
-
-
-
-
                     <br></br>
                 </div>
             </div>
