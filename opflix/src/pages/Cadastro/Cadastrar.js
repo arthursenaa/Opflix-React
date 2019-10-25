@@ -14,6 +14,7 @@ export default class Cadastro extends Component {
             senha1: "",
             erro: "",
             erro400: "",
+            cadastrado: ""
         }
     }
     cadastroNome = (event) => {

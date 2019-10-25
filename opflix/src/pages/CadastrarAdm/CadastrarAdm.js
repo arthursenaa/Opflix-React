@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import './Cadastro.css';
 
-export default class Cadastro extends Component {
+export default class CadastroAdm extends Component {
 
 
     constructor() {
@@ -33,14 +33,20 @@ export default class Cadastro extends Component {
         this.setState({ senha1: event.target.value })
     }
 
-    fazerCadastro = (event) => {
+    cadastrarAdm = (event) => {
         event.preventDefault();
         if (this.state.senha === this.state.senha1) {
-
-            Axios.post("http://localhost:5000/api/login/CadastrarADM", {
+            //Erro 401
+            Axios.post("http://localhost:5000/api/login/cadastraradm", {
                 nome: this.state.nome,
                 email: this.state.email,
-                senha: this.state.senha,
+                senha: this.state.senha
+                
+            },{
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
+                    'Content-Type': 'application/json'
+                },
             }) 
                 .then(response => this.listarCategoria())
                 .catch(erro => console.log(erro));
@@ -60,8 +66,8 @@ export default class Cadastro extends Component {
                 <div className="divForm">
 
 
-                    <form method="POST" onSubmit={this.fazerCadastro}>
-                        <h1>Cadastrar</h1>
+                    <form method="POST" onSubmit={this.cadastrarAdm}>
+                        <h1>Cadastrar Adm </h1>
                         <br></br>
                         <div className="item">
                             <input
