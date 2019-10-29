@@ -294,40 +294,7 @@ export default class Filmes extends Component {
                                 </Card.Body>
                             </Accordion.Collapse>
                         </Card>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <Card>
-                            <Card.Header style={{ backgroundColor: "Black" }}>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="5" style={{ color: "white" }}>
-                                    Listar Todos Os Genero
-                                </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="5">
-                                <Card.Body>
-                                    <div id="generos">
-                                        <Table striped bordered hover variant="dark">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Genero</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {this.state.generos.map(element => {
-                                                    return (
-                                                        <tr key={element.idGenero}>
-                                                            <td>{element.idGenero}</td>
-                                                            <td>{element.nome}</td>
-                                                        </tr>
-                                                    );
-                                                })}
-                                            </tbody>
-                                        </Table>
-                                    </div>
-                                </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
+                        
                         <br></br>
                         <br></br>
                         <br></br>
@@ -379,7 +346,47 @@ export default class Filmes extends Component {
                                 </Card.Body>
                             </Accordion.Collapse>
                         </Card>
-                        
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        {parseJwt().permissao === '2' ?
+                        (
+                        <Card>
+                            <Card.Header style={{ backgroundColor: "Black" }}>
+                                <Accordion.Toggle as={Button} variant="link" eventKey="5" style={{ color: "white" }}>
+                                    Listar Todos Os Genero
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="5">
+                                <Card.Body>
+                                    <div id="generos">
+                                        <Table striped bordered hover variant="dark">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Genero</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {this.state.generos.map(element => {
+                                                    return (
+                                                        <tr key={element.idGenero}>
+                                                            <td>{element.idGenero}</td>
+                                                            <td>{element.nome}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </Table>
+                                    </div>
+                                </Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        ) : (
+                            <div>
+                                <br></br>
+                            </div>
+                        )}
                     </Accordion>
 
                     <br></br>

@@ -47,6 +47,9 @@ export default class CadastrarFilme extends Component {
     cadastroClassificacao = (event) => {
         this.setState({ Classificacao: event.target.value })
     }
+    cadastrolancamentoData = (event) => {
+        this.setState({ lancamentoData: event.target.value })
+    }
 
     cadastrarFilme = (event) => {
         event.preventDefault();
@@ -116,15 +119,17 @@ export default class CadastrarFilme extends Component {
                             />
                         </div>
                         <br></br>
+                            <label style={{fontSize:"85%", marginLeft:"-40%"}}>Data de Lançamento:</label>
                         <div className="item">
                             <input
                                 className="input__login"
                                 placeholder=" Data de Lançamento"
-                                type="text"
+                                type="date"
                                 name="password"
                                 id="login__password"
-                                onChange={this.cadastroClassificacao}
-                                value={this.state.Classificacao}
+                                onChange={this.cadastrolancamentoData}
+                                value={this.state.lancamentoData}
+                                style={{width:"128%",marginLeft:"-14%"}}
                             />
                         </div>
                         <br></br>
