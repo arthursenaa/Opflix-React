@@ -53,4 +53,4 @@ drop table Plataforma
 drop table Favorito
 drop table Lancamento
 
-select * from Usuario
+select * from Lancamento
