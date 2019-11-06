@@ -42,7 +42,7 @@ export default class Cadastro extends Component {
                 email: this.state.email,
                 senha: this.state.senha,
             }) 
-                .then(response => this.listarCategoria())
+                .then(response => response.json())
                 .catch(erro => console.log(erro));
 
         } else {

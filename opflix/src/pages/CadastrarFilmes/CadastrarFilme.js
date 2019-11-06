@@ -14,8 +14,8 @@ export default class CadastrarFilme extends Component {
             lancamentoData: "",
             idPlataforma: "",
             idTipo: "",
-            IdGenero: "",
-            Classificacao: "",
+            idGenero: "",
+            classificacaoIndicativa: "",
             erro: "",
             generos: [],
             plataforma: []
@@ -43,11 +43,11 @@ export default class CadastrarFilme extends Component {
     }
 
     cadastroGenero = (event) => {
-        this.setState({ IdGenero: event.target.value })
+        this.setState({ idGenero: event.target.value })
     }
 
     cadastroClassificacao = (event) => {
-        this.setState({ Classificacao: event.target.value })
+        this.setState({ classificacaoIndicativa: event.target.value })
     }
     cadastrolancamentoData = (event) => {
         this.setState({ lancamentoData: event.target.value })
@@ -64,6 +64,7 @@ export default class CadastrarFilme extends Component {
             .then(response => response.json())
             .then(data => this.setState({ generos: data }));
     }
+    
     listarPlataforma = () => {
         // eventDefault();
         fetch('http://localhost:5000/api/plataforma', {
@@ -76,26 +77,40 @@ export default class CadastrarFilme extends Component {
             .then(data => this.setState({ plataforma: data }));
     }
 
+
+
     cadastrarFilme = (event) => {
-        event.preventDefault()
-            Axios.Post("http://localhost:5000/api/lancamento", {
+        event.preventDefault();
+
+        fetch('http://localhost:5000/api/lancamento', {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix')
+            },
+            body: JSON.stringify({
                 nome: this.state.nome,//Ok
                 sinopse: this.state.sinopse,//Ok
                 duracao: this.state.duracao,//Ok
                 lancamentoData: this.state.lancamentoData,//Ok
                 idPlataforma: this.state.idPlataforma,//ok
                 idTipo: this.state.idTipo,
-                IdGenero: this.state.IdGenero,//Ok sem teste
-                Classificacao: this.state.Classificacao,//Ok sem teste
-            })
-                // .then(response => this.listarCategoria())
-                .catch(erro => console.log(erro));
-            this.setState({ sucesso: "Filme Cadastrado" })
+                idGenero: this.state.idGenero,//Ok sem teste
+                classificacaoIndicativa: this.state.classificacaoIndicativa,//Ok sem teste
+
+            }),
+        })
+            .then(response => response.json())
+            .catch(error => console.log(error))
+        this.setState({ sucesso: "Filme Cadastrado" })
+
     }
 
-    componentDidMount(){
-        this.listarGenero();
+
+    componentDidMount() {
         this.listarPlataforma();
+        this.listarGenero();
     }
 
     render() {
@@ -157,48 +172,50 @@ export default class CadastrarFilme extends Component {
                             />
                         </div>
                         <br></br>
-                        <div style={{ display: "flex" ,marginLeft:'-5%'}}>
+                        <div style={{ display: "flex", marginLeft: '-5%' }}>
+
+                            
                             <div className="item" >
-                                <select  placeholder="Generos" style={{width:"50%",fontSize:"0.8em"}} >
+                                <select style={{ width: "50%", fontSize: "0.8em" }} onChange={this.cadastroGenero} >                                    
                                     {this.state.generos.map(element => {
                                         return (
-                                            <option onChange={this.cadastroGenero} value={this.state.IdGenero}>{element.nome}</option>
-                                            );
-                                        })}
+                                            <option value={element.idGenero} key={element.idGenero}>{element.nome}</option>
+                                        );
+                                    })}
                                 </select>
                             </div>
+
                             <div className="item" >
-                                <select placeholder="Plataforma" style={{width:"50%",fontSize:"0.8em"}} >
+                                <select onChange={this.cadastroPlataforma}  style={{ width: "50%", fontSize: "0.8em" }} >
                                     {this.state.plataforma.map(element => {
                                         return (
-                                            <option onChange={this.cadastroPlataforma} value={this.state.idPlataforma}>{element.plataforma1}</option>
-                                            );
-                                        })}
+                                            <option value={this.state.idPlataforma} key={this.state.idPlataforma}>{element.plataforma1}</option>
+                                        );
+                                    })}
                                 </select>
                             </div>
                             <div className="item" >
-                                <select onchange="cadastroClassificacao()" placeholder="Classificação" style={{width:"100%",fontSize:"0.8em"}} >
-                                    <option value={"L" === this.setState.Classificacao}>Livre</option>
-                                    <option value={"13" === this.setState.Classificacao}>+10</option>
-                                    <option value={"13" === this.setState.Classificacao}>+13</option>
-                                    <option value={"16" === this.setState.Classificacao } >+16</option>
-                                    <option value={"18" === this.setState.Classificacao }>+18</option>
+                                <select onchange={this.cadastroClassificacao} placeholder="Classificação" style={{ width: "100%", fontSize: "0.8em" }} >
+                                    <option value="L">Livre</option>
+                                    <option value="13">+10</option>
+                                    <option value="13">+13</option>
+                                    <option value="16">+16</option>
+                                    <option value="18">+18</option>
                                 </select>
                             </div>
                             <div className="item" >
-                                <select onchange="cadastroTipo()" placeholder="Tipo" style={{width:"100%",fontSize:"0.8em"}} >
-                                    <option value="1" onClick={ 1 === this.setState.idTipo}>Filme</option>
-                                    <option value="2" onClick={ 2 === this.setState.idTipo}>Série</option>
+                                <select onchange={this.cadastroTipo} placeholder="Tipo" style={{ width: "100%", fontSize: "0.8em" }} >
+                                    <option value="1">Filme</option>
+                                    <option value="2">Série</option>
                                 </select>
                             </div>
                         </div>
                         <br></br>
                         <div className="item">
 
-                            <button className="btn btn__login" id="btn__login" onClick={this.cadastrarFilme}  style={{ backgroundcolor: "red" }}>
+                            <button className="btn btn__login" id="btn__login" onClick={this.cadastrarFilme} style={{ backgroundcolor: "red" }}>
                                 Enviar
-                                {console.log(this.state.IdGenero)}
-                        </button >
+                            </button >
                         </div>
                         <br></br>
                         <p
