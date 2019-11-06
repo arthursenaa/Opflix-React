@@ -27,6 +27,8 @@ create table Tipo(
 	,Tipo			varchar(255) not null unique
 )
 
+select * from Tipo
+
 create table Plataforma(
 	IdPlataforma		int primary key identity
 	,Plataforma			varchar(255) not null unique

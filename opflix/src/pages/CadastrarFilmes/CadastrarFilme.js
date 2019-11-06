@@ -16,7 +16,9 @@ export default class CadastrarFilme extends Component {
             idTipo: "",
             IdGenero: "",
             Classificacao: "",
-            erro: ""
+            erro: "",
+            generos: [],
+            plataforma: []
         }
     }
     cadastroNome = (event) => {
@@ -51,27 +53,49 @@ export default class CadastrarFilme extends Component {
         this.setState({ lancamentoData: event.target.value })
     }
 
-    cadastrarFilme = (event) => {
-        event.preventDefault();
-        if (this.state.senha === this.state.senha1) {
-            //Erro 401
-            Axios.post("http://localhost:5000/api/lancamento", {
-                nome: this.state.nome,
-                sinopse: this.state.sinopse,
-                duracao: this.state.duracao,
-                lancamentoData: this.state.lancamentoData,
-                idPlataforma: this.state.idPlataforma,
-                idTipo: this.state.idTipo,
-                IdGenero: this.state.IdGenero,
-                Classificacao: this.state.Classificacao,
-            }) 
-                .then(response => this.listarCategoria())
-                .catch(erro => console.log(erro));
-                this.setState({ sucesso: "Filme Cadastrado" })
+    listarGenero = () => {
+        // eventDefault();
+        fetch('http://localhost:5000/api/categoria', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => this.setState({ generos: data }));
+    }
+    listarPlataforma = () => {
+        // eventDefault();
+        fetch('http://localhost:5000/api/plataforma', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => this.setState({ plataforma: data }));
+    }
 
-        } else {
-            this.setState({ erro: "Erro Ao cadastrar" })
-        }
+    cadastrarFilme = (event) => {
+        event.preventDefault()
+            Axios.Post("http://localhost:5000/api/lancamento", {
+                nome: this.state.nome,//Ok
+                sinopse: this.state.sinopse,//Ok
+                duracao: this.state.duracao,//Ok
+                lancamentoData: this.state.lancamentoData,//Ok
+                idPlataforma: this.state.idPlataforma,//ok
+                idTipo: this.state.idTipo,
+                IdGenero: this.state.IdGenero,//Ok sem teste
+                Classificacao: this.state.Classificacao,//Ok sem teste
+            })
+                // .then(response => this.listarCategoria())
+                .catch(erro => console.log(erro));
+            this.setState({ sucesso: "Filme Cadastrado" })
+    }
+
+    componentDidMount(){
+        this.listarGenero();
+        this.listarPlataforma();
     }
 
     render() {
@@ -80,12 +104,12 @@ export default class CadastrarFilme extends Component {
                 <nav className="Nav">
                     <h1 style={{ color: "red", fontFamily: "Cooper", fontSize: "2.5em" }} className="h1"><a href="/" style={{ textDecoration: "none", color: "red" }}>OpFlix</a></h1>
                 </nav>
-                <div className="divForm" style={{marginTop:"1.2em"}}>
+                <div className="divForm" style={{ marginTop: "1.2em" }}>
 
 
                     <form method="POST" onSubmit={this.cadastrarAdm}>
                         <h1>Cadastrar Filme</h1>
-                        
+
                         <div className="item">
                             <input
                                 className="input__login"
@@ -102,10 +126,10 @@ export default class CadastrarFilme extends Component {
                             <textarea
                                 placeholder="Sinopse"
                                 type="text"
-                                maxLength="255"
+                                maxLength="455"
                                 onChange={this.cadastrarSinopse}
                                 value={this.state.sinopse}
-                                style={{width:"153%" , marginLeft:"-26%"}}
+                                style={{ width: "153%", marginLeft: "-26%" }}
                             />
                         </div>
                         <br></br>
@@ -119,7 +143,7 @@ export default class CadastrarFilme extends Component {
                             />
                         </div>
                         <br></br>
-                            <label style={{fontSize:"85%", marginLeft:"-40%"}}>Data de Lançamento:</label>
+                        <label style={{ fontSize: "85%", marginLeft: "-40%" }}>Data de Lançamento:</label>
                         <div className="item">
                             <input
                                 className="input__login"
@@ -129,40 +153,51 @@ export default class CadastrarFilme extends Component {
                                 id="login__password"
                                 onChange={this.cadastrolancamentoData}
                                 value={this.state.lancamentoData}
-                                style={{width:"128%",marginLeft:"-14%"}}
+                                style={{ width: "128%", marginLeft: "-14%" }}
                             />
                         </div>
                         <br></br>
+                        <div style={{ display: "flex" ,marginLeft:'-5%'}}>
+                            <div className="item" >
+                                <select  placeholder="Generos" style={{width:"50%",fontSize:"0.8em"}} >
+                                    {this.state.generos.map(element => {
+                                        return (
+                                            <option onChange={this.cadastroGenero} value={this.state.IdGenero}>{element.nome}</option>
+                                            );
+                                        })}
+                                </select>
+                            </div>
+                            <div className="item" >
+                                <select placeholder="Plataforma" style={{width:"50%",fontSize:"0.8em"}} >
+                                    {this.state.plataforma.map(element => {
+                                        return (
+                                            <option onChange={this.cadastroPlataforma} value={this.state.idPlataforma}>{element.plataforma1}</option>
+                                            );
+                                        })}
+                                </select>
+                            </div>
+                            <div className="item" >
+                                <select onchange="cadastroClassificacao()" placeholder="Classificação" style={{width:"100%",fontSize:"0.8em"}} >
+                                    <option value={"L" === this.setState.Classificacao}>Livre</option>
+                                    <option value={"13" === this.setState.Classificacao}>+10</option>
+                                    <option value={"13" === this.setState.Classificacao}>+13</option>
+                                    <option value={"16" === this.setState.Classificacao } >+16</option>
+                                    <option value={"18" === this.setState.Classificacao }>+18</option>
+                                </select>
+                            </div>
+                            <div className="item" >
+                                <select onchange="cadastroTipo()" placeholder="Tipo" style={{width:"100%",fontSize:"0.8em"}} >
+                                    <option value="1" onClick={ 1 === this.setState.idTipo}>Filme</option>
+                                    <option value="2" onClick={ 2 === this.setState.idTipo}>Série</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br></br>
+                        <div className="item">
 
-                        {/* tresto */}
-                        <div className="item">
-                            <input
-                                className="input__login"
-                                placeholder="Classificaçao Indicativa"
-                                type="date"
-                                name="password"
-                                id="login__password"
-                                onChange={this.cadastroData}
-                                value={this.state.lancamentoData}
-                            />
-                        </div>
-                        <br></br>
-                        <div className="item">
-                            <input
-                                className="input__login"
-                                placeholder=" Data de Lançamento"
-                                type="date"
-                                name="password"
-                                id="login__password"
-                                onChange={this.cadastroData}
-                                value={this.state.lancamentoData}
-                            />
-                        </div>
-                        <br></br>
-                        <div className="item">
-
-                            <button className="btn btn__login" id="btn__login" style={{ backgroundcolor: "red" }}>
+                            <button className="btn btn__login" id="btn__login" onClick={this.cadastrarFilme}  style={{ backgroundcolor: "red" }}>
                                 Enviar
+                                {console.log(this.state.IdGenero)}
                         </button >
                         </div>
                         <br></br>
