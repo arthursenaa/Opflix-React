@@ -51,7 +51,7 @@ namespace Senai.OpFlix.WebApi.Repositories
             //var Nomep = Nome;
 
             //var plataforma = ctx.Plataforma
-            //    .FromSql("SELECT * FROM Plataforma WHERE Plataforma Like '%{0}%'", Nomep)
+            //    .FromSql("SELECT * FROM Plataforma WHERE Plataforma Like '%{0}%'", Nome)
             //    .ToList();      
             return ctx.Plataforma.Include(x => x.Lancamento).FirstOrDefault(x => x.Plataforma1 == Nome);
         }

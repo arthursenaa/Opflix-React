@@ -54,3 +54,5 @@ drop table Favorito
 drop table Lancamento
 
 select * from Lancamento
+
+SELECT * FROM Lancamento WHERE Nome LIKE '%a%';

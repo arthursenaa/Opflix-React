@@ -85,5 +85,11 @@ namespace Senai.OpFlix.WebApi.Controllers
         {
             return Ok(LancamentoRepository.BuscarPorDataD());
         }
+
+        [HttpGet("{Nome}")]
+        public IActionResult BuscarPorNome(string Nome)
+        {
+            return Ok(LancamentoRepository.BuscarPorNome(Nome));
+        }
     }
 }
