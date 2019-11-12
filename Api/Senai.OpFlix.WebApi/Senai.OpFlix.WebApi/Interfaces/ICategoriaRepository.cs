@@ -11,5 +11,7 @@ namespace Senai.OpFlix.WebApi.Interfaces
         List<Genero> ListarCategorias();
         void CadastrarCategorias(Genero genero);
         void AtualizarCategorias(Genero genero);
+        Genero ListarId(int Id);
+
     }
 }

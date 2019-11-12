@@ -34,5 +34,10 @@ namespace Senai.OpFlix.WebApi.Repositories
         {
             return ctx.Genero.Include(x => x.Lancamento).ToList();
         }
+
+        public Genero ListarId(int Id)
+        {
+            return ctx.Genero.Include(x => x.Lancamento).FirstOrDefault(x => x.IdGenero == Id);
+        }
     }
 }

@@ -61,5 +61,11 @@ namespace Senai.OpFlix.WebApi.Controllers
                 return BadRequest(new { mensagem = "Erro. Aguarde um momento." + ex.Message });
             }
         }
+
+        [HttpGet("{id}")]
+        public IActionResult ListarPorId(int Id)
+        {
+            return Ok(CategoriaRepository.ListarId(Id));
+        }
     }
 }

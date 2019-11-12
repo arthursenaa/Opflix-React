@@ -11,17 +11,20 @@ import {
 } from 'react-native';
 
 class SignIn extends Component {
+  static navigationOptions = {
+    header: null,
+  };
 
   constructor() {
     super();
     this.state = {
       email: 'erik@email.com',
-      senha: '123456'
+      senha: '123456',
     };
 
-    this._cadastrar = this._cadastrar.bind(this);
+    // this._cadastrar = this._cadastrar.bind(this);
   }
-
+  
   _logar = async () => {
     await fetch('http://192.168.6.115:5000/api/login', {
       method: 'POST',
@@ -34,24 +37,24 @@ class SignIn extends Component {
         senha: this.state.senha,
       }),
     })
-      .then(resposta => resposta.json())
-      .then(data => this._irParaFilme(data.token))
-      .catch(erro => console.warn(erro));
+    .then(resposta => resposta.json())
+    .then(data => this._irParaFilme(data.token))
+    .catch(erro => console.warn(erro));
+    // alert(this.state.senha)
   };
-
-  _irParaFilme = async (tokenOpFlix) => {
-    if (tokenOpFlix != null) {
-      try {
-        await AsyncStorage.setItem('@opflix:token', tokenOpFlix);
-        this.props.navigation.navigate('MainNavigator');
-      } catch (error) {
-        console.warn(error)
+    
+    _irParaFilme = async (tokenOpFlix) => {
+      if (tokenOpFlix != null) {
+        try {
+          await AsyncStorage.setItem('@opflix:token', tokenOpFlix);
+          this.props.navigation.navigate('MainNavigator');
+        } catch (error) {
+          console.warn(error)
       }
     }
   };
 
   _cadastrar() {
-    // const { navigate } = this.props.navigation;
     try {
       console.warn('chamei')
       this.props.navigation.navigate('CadastroStack');
@@ -80,7 +83,7 @@ class SignIn extends Component {
           onChangeText={senha => this.setState({ senha })}
           value={this.state.senha}
           style={styles.inputum}
-        />
+          />
         <TouchableOpacity onPress={this._logar} style={styles.btn}>
           <Text style={{ color: 'white', marginTop: '3%' }}>Login</Text>
         </TouchableOpacity>

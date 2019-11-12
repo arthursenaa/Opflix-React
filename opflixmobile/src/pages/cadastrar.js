@@ -13,6 +13,10 @@ import {
 
 
 class cadastrar extends Component {
+    static navigationOptions = {
+        header: null,
+      };
+    
     constructor() {
         super();
         this.state = {
@@ -44,8 +48,9 @@ class cadastrar extends Component {
                 .then(response => response.json())
                 .catch(erro => console.log(erro));
             this.setState({ cadastrado: "Usuario Cadastrado" })
+            alert("Usuario Cadastrado")
         } else {
-            this.setState({ erro: "As Senhas Digitadas Estão Diferentes" })
+            alert("As Senhas Digitadas Estão Diferentes" )
         }
     }
 
