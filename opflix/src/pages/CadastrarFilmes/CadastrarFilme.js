@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-// import './Cadastro.css';
+// import '../Cadastro/';
+import Menu from '../../componentes/Menu.js';
 
 export default class CadastrarFilme extends Component {
 
@@ -55,7 +56,7 @@ export default class CadastrarFilme extends Component {
 
     listarGenero = () => {
         // eventDefault();
-        fetch('http://localhost:5000/api/categoria', {
+        fetch('http://192.168.6.115:5000/api/categoria', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
                 'Content-Type': 'application/json'
@@ -67,7 +68,7 @@ export default class CadastrarFilme extends Component {
     
     listarPlataforma = () => {
         // eventDefault();
-        fetch('http://localhost:5000/api/plataforma', {
+        fetch('http://192.168.6.115:5000/api/plataforma', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
                 'Content-Type': 'application/json'
@@ -82,7 +83,7 @@ export default class CadastrarFilme extends Component {
     cadastrarFilme = (event) => {
         event.preventDefault();
 
-        fetch('http://localhost:5000/api/lancamento', {
+        fetch('http://192.168.6.115:5000/api/lancamento', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -116,10 +117,8 @@ export default class CadastrarFilme extends Component {
     render() {
         return (
             <div className="divCadastro">
-                <nav className="Nav">
-                    <h1 style={{ color: "red", fontFamily: "Cooper", fontSize: "2.5em" }} className="h1"><a href="/" style={{ textDecoration: "none", color: "red" }}>OpFlix</a></h1>
-                </nav>
-                <div className="divForm" style={{ marginTop: "1.2em" }}>
+                <Menu />
+                <div className="divForm" style={{ marginTop: "7.2em" }}>
 
 
                     <form method="POST" onSubmit={this.cadastrarAdm}>

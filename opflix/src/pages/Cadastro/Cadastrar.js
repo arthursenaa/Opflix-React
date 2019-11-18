@@ -37,7 +37,7 @@ export default class Cadastro extends Component {
         event.preventDefault();
         if (this.state.senha === this.state.senha1) {
 
-            Axios.post("http://localhost:5000/api/login/cadastrar", {
+            Axios.post("http://192.168.6.115:5000/api/login/cadastrar", {
                 nome: this.state.nome,
                 email: this.state.email,
                 senha: this.state.senha,

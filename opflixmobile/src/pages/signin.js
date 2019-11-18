@@ -18,8 +18,10 @@ class SignIn extends Component {
   constructor() {
     super();
     this.state = {
-      email: 'erik@email.com',
-      senha: '123456',
+      email: null,
+      senha: null,
+      // 123456
+      // erik@email.com'
     };
 
     // this._cadastrar = this._cadastrar.bind(this);
@@ -124,7 +126,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: 'center',
     color: 'white',
-  }
+  },
+   
 });
 
 export default SignIn;

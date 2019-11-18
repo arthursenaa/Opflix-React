@@ -53,6 +53,11 @@ drop table Plataforma
 drop table Favorito
 drop table Lancamento
 
-select * from Lancamento
+select * from Genero
 
 SELECT * FROM Lancamento WHERE Nome LIKE '%a%';
+
+DELETE FROM Genero where IdGenero = 14
+WHERE IdGenero = 13
+
+

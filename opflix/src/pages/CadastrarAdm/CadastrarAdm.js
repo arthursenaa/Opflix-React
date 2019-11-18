@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import './Cadastro.css';
+import Menu from '../../componentes/Menu.js';
 
 export default class CadastroAdm extends Component {
 
@@ -37,7 +38,7 @@ export default class CadastroAdm extends Component {
         event.preventDefault();
         if (this.state.senha === this.state.senha1) {
             //Erro 401
-            Axios.post("http://localhost:5000/api/login/cadastraradm", {
+            Axios.post("http://192.168.6.115:5000/api/login/cadastraradm", {
                 nome: this.state.nome,
                 email: this.state.email,
                 senha: this.state.senha
@@ -60,9 +61,10 @@ export default class CadastroAdm extends Component {
     render() {
         return (
             <div className="divCadastro">
-                <nav className="Nav">
+                {/* <nav className="Nav">
                     <h1 style={{ color: "red", fontFamily: "Cooper", fontSize: "2.5em" }} className="h1"><a href="/" style={{ textDecoration: "none", color: "red" }}>OpFlix</a></h1>
-                </nav>
+                </nav> */}
+                <Menu />
                 <div className="divForm">
 
 

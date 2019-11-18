@@ -48,7 +48,7 @@ class cadastrar extends Component {
                 .then(response => response.json())
                 .catch(erro => console.log(erro));
             this.setState({ cadastrado: "Usuario Cadastrado" })
-            alert("Usuario Cadastrado")
+            alert("O usuario"+ this.state.nome + " foi cadastrado")
         } else {
             alert("As Senhas Digitadas Estão Diferentes" )
         }

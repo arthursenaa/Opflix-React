@@ -10,7 +10,7 @@ function Menu() {
 
     return (
         <Navbar bg="dark" variant="dark" fixed="top">
-            <Navbar.Brand href="/" style={{ color: "red", fontFamily: "Cooper", fontSize: "2em" }}>Opflix</Navbar.Brand>
+            <Navbar.Brand href="/Filmes" style={{ color: "red", fontFamily: "Cooper", fontSize: "2em" }}>Opflix</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 {
@@ -23,12 +23,15 @@ function Menu() {
                                 <Nav.Link href="#Antigos" style={{ fontSize: "Large" }}>Mais Antigos </Nav.Link> */}
                                 <Nav.Link href="/CadastroAdm" style={{ fontSize: "Large" }}>Cadastrar Adm </Nav.Link>
                                 <Nav.Link href="/CadastrarFilme" style={{ fontSize: "Large" }}>Cadastrar Filme </Nav.Link>
+                                <Nav.Link href="/CadastrarCategoria" style={{ fontSize: "Large" }}>Cadastrar Genero </Nav.Link>
+                                <Nav.Link href="/" style={{ fontSize: "Large"}}>Logout </Nav.Link>
                             </Nav>
                         ) : (
                             <Nav className="mr-auto" >
                                 <Nav.Link href="#Filmes" style={{ fontSize: "Large" }}>Lista de Filmes</Nav.Link>
                                 <Nav.Link href="#Ultimos" style={{ fontSize: "Large" }}>Ultimos Lançamentos</Nav.Link>
                                 <Nav.Link href="#Antigos" style={{ fontSize: "Large" }}>Mais Antigos </Nav.Link>
+                                <Nav.Link href="/" style={{ fontSize: "Large" }}>Logout </Nav.Link>
                             </Nav>)
                 }}
                     {/* <Nav.Link href="#Ultimos" style={{fontSize:"Large"}}>Ultimos Lançamentos</Nav.Link> */}

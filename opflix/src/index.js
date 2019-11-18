@@ -9,6 +9,7 @@ import Cadastro from './pages/Cadastro/Cadastrar';
 // import ADM from './pages/Adm/Adm';
 import CadastroAdm from './pages/CadastrarAdm/CadastrarAdm';
 import CadastrarFilmes from './pages/CadastrarFilmes/CadastrarFilme';
+import CadastrarCategoria from './pages/CadastrarCategoria/CadastrarCategoria';
 
 import NaoEncontrado from "./pages/NaoEncontrado/NaoEncontrado";
 
@@ -71,6 +72,7 @@ const routing = (
                 <RotaLogin path='/Filmes' component={Filmes} />
                 <RotaAdm path='/CadastroAdm' component={CadastroAdm} />
                 <RotaAdm path='/CadastrarFilme' component={CadastrarFilmes} />
+                <RotaAdm path='/CadastrarCategoria' component={CadastrarCategoria} />
                 {/* <RotaLogin path='/CadastrarADM' component={CadastrarAdm} /> */}
                 {/* <UsuarioComum path='/Filmes' component={Filmes} /> */}
                 {/* <RotaPrivada path='/Adm' component={ADM}></RotaPrivada> */}

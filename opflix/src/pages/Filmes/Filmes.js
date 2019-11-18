@@ -34,7 +34,7 @@ export default class Filmes extends Component {
 
     //Tabela Filme
     listarFilme = () => {
-        fetch('http://localhost:5000/api/lancamento', {
+        fetch('http://192.168.6.115:5000/api/lancamento', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
                 'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ export default class Filmes extends Component {
 
     // listar5
     ultimosLancamentos = () => {
-        fetch('http://localhost:5000/api/lancamento/datad', {
+        fetch('http://192.168.6.115:5000/api/lancamento/datad', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
                 'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ export default class Filmes extends Component {
     }
     //MaisAntigos
     maisAntigos = () => {
-        fetch('http://localhost:5000/api/lancamento/datac', {
+        fetch('http://192.168.6.115:5000/api/lancamento/datac', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
                 'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ export default class Filmes extends Component {
     //Por Genero
     listarGenero = () => {
         // eventDefault();
-        fetch('http://localhost:5000/api/categoria', {
+        fetch('http://192.168.6.115:5000/api/categoria', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
                 'Content-Type': 'application/json'
@@ -81,17 +81,17 @@ export default class Filmes extends Component {
     }
     //Excluir
 
-    // excluirFilme = () => {
-    //     // eventDefault();
-    //     fetch('http://localhost:5000/api/lancamento/' + this.state.idExcluir, {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
-    //             'Content-Type': 'application/json'
-    //         },
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => this.setState({ generos: data }));
-    // }
+    excluirFilme = () => {
+        // eventDefault();
+        Axios.delete('http://192.168.6.115:5000/api/lancamento/' + this.state.idExcluir , {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => this.setState({ generos: data }));
+    }
 
     componentDidMount() {
         this.listarFilme();
@@ -151,7 +151,9 @@ export default class Filmes extends Component {
                                                                     <td>
                                                                         <ButtonToolbar style={{width:"50%" , marginLeft:"38%"}}>
                                                                             <Button variant="primary" size="sm" 
-                                                                            // onSubmit={this.setState({idExcluir:element.idLancamentos})}
+                                                                            // onClick={this.setState({idExcluir:element.idLancamentos})}
+                                                                            // onSubmit={}
+                                                                            // onClick={this.setState({idExcluir: element.idLancamentos})}
                                                                             >
                                                                                 Excluir
                                                                         </Button>

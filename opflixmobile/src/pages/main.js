@@ -122,8 +122,16 @@ class main extends Component {
                                 keyExtractor={item => item.idLancamentos}
                                 renderItem={({ item }) => (
                                     <View>
-                                        <Text style={{ color: "white" }}>   {item.nome}  -  {item.duracao}</Text>
-                                        <Text style={{ color: "white", height: 8 }}></Text>
+                                        <Collapse>
+                                            <CollapseHeader >
+                                                <Text style={{ color: "white", fontSize: 15  }}>   {item.nome} </Text>
+                                            </CollapseHeader>
+                                            <CollapseBody  style={{ backgroundColor: '#1a1a1a', borderColor: 'black' }}>
+                                            <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
+                                                <Text style={styles.item}> - Duração : {item.duracao}</Text>
+                                                <Text style={styles.item}> - Classificação Indicativa : {item.classificacaoIndicativa}</Text>
+                                            </CollapseBody>
+                                        </Collapse>
                                     </View>
                                 )}
                             />
@@ -144,8 +152,16 @@ class main extends Component {
                                 keyExtractor={item => item.idLancamentos}
                                 renderItem={({ item }) => (
                                     <View>
-                                        <Text style={{ color: "white" }}>   {item.nome}  -  {item.duracao}</Text>
-                                        <Text style={{ color: "white", height: 8 }}></Text>
+                                        <Collapse>
+                                            <CollapseHeader >
+                                                <Text style={{ color: "white", fontSize: 15 }}>   {item.nome} </Text>
+                                            </CollapseHeader>
+                                            <CollapseBody style={{ backgroundColor: '#1a1a1a', borderColor: 'black' }}>
+                                                <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
+                                                <Text style={styles.item}> - Duração : {item.duracao}</Text>
+                                                <Text style={styles.item}> - Classificação Indicativa : {item.classificacaoIndicativa}</Text>
+                                            </CollapseBody>
+                                        </Collapse>
                                     </View>
                                 )}
                             />
@@ -161,14 +177,26 @@ class main extends Component {
                         </CollapseHeader>
                         <CollapseBody>
                             <FlatList
-                            // horizontal={true}
+                                // horizontal={true}
                                 style={styles.lista}
                                 data={this.state.antigos}
                                 keyExtractor={item => item.idLancamentos}
                                 renderItem={({ item }) => (
                                     <View>
-                                        <Text style={{ color: "white" }}>   {item.nome}  -  {item.duracao}</Text>
-                                        <Text style={{ color: "white", height: 8 }}></Text>
+                                        <Collapse>
+                                            <CollapseHeader >
+                                                <Text style={{ color: "white", fontSize: 15 }}>   {item.nome} </Text>
+                                            </CollapseHeader>
+                                            <CollapseBody style={{ backgroundColor: '#1a1a1a', borderColor: 'black' }}>
+
+                                                <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
+                                                <Text style={styles.item}> - Duração : {item.duracao}</Text>
+                                                {/* <Text style={{ color: "white" }}> - Genero: {item.idGeneroNavigation.idGenero}</Text> */}
+                                                {/* <Text style={{ color: "white" }}> - Tipo: {item.idTipoNavigation.nome}</Text> */}
+                                                <Text style={styles.item}> - Classificação Indicativa : {item.classificacaoIndicativa}</Text>
+                                            </CollapseBody>
+                                        </Collapse>
+
                                     </View>
                                 )}
                             />
@@ -193,9 +221,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     lista: {
-        backgroundColor: '#1a1a1a',
+        backgroundColor: 'black',
         marginLeft: '15%',
         width: '70%',
+        borderColor: 'red',
+        borderWidth: 2,
         // marginTop: '15%',
         // marginBottom: '15%',
         borderBottomLeftRadius: 15,
@@ -210,6 +240,9 @@ const styles = StyleSheet.create({
         marginTop: '10%',
         marginLeft: '15%',
         width: '70%',
+    },
+    item: {
+        color: "white", marginLeft: '10%'
     }
 })
 
