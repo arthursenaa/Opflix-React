@@ -106,9 +106,9 @@ class nome extends Component {
                         <View>
                             <Collapse>
                                 <CollapseHeader>
-                                    <Text style={{ color: "white", fontSize: 15, marginTop: '5%' }}>   - {item.nome} </Text>
+                                    <Text style={{ color: "white", fontSize: 15, marginTop: '5%',marginBottom: '2%' }}>   - {item.nome} </Text>
                                 </CollapseHeader>
-                                <CollapseBody style={{ backgroundColor: 'grey', borderBottomLeftRadius: 25, borderBottomRightRadius: 25, }}>
+                                <CollapseBody style={{ backgroundColor: '#343537', borderBottomLeftRadius: 15, borderBottomRightRadius: 15, }}>
                                     <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
                                     <Text style={styles.item}> - Duração : {item.duracao}</Text>
                                     <Text style={styles.item}> - Classificação Indicativa : {item.classificacaoIndicativa}</Text>
