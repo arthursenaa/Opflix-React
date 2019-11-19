@@ -69,6 +69,8 @@ namespace Senai.OpFlix.WebApi.Repositories
         public Lancamento BuscarPorNome(string Titulo)
         {
             return ctx.Lancamento.FirstOrDefault(x => x.Nome == Titulo);
+
+            //return ctx.Lancamento.FromSql("SELECT * FROM Lancamento").ToList();
         }
     }
 }

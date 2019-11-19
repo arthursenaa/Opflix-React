@@ -61,3 +61,18 @@ DELETE FROM Genero where IdGenero = 14
 WHERE IdGenero = 13
 
 
+
+GO
+CREATE PROCEDURE BuscaFilmePorNome
+@CampoBusca VARCHAR (30) 
+AS
+SELECT *
+FROM Lancamento
+WHERE Nome = @CampoBusca 
+
+
+EXECUTE BuscaFilmePorNome 'titanic'
+
+
+
+

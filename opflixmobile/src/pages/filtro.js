@@ -106,7 +106,6 @@ class filtro extends Component {
                 <Text style={styles.Titulo}>Filtrar Por Genero</Text>
 
                 <Picker
-                    
                     selectedValue={this.state.generos}
                     onValueChange={this._onChageValue.bind(this)}
                     style={styles.picker}

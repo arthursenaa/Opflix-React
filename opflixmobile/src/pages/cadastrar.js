@@ -67,12 +67,15 @@ class cadastrar extends Component {
                     onChangeText={nome => this.setState({ nome })}
                     value={this.state.nome}
                     style={styles.input}
+                    placeholderTextColor='white'
+
                 />
                 <TextInput
                     placeholder="      Email"
                     onChangeText={email => this.setState({ email })}
                     value={this.state.email}
                     style={styles.input}
+                    placeholderTextColor='white'
 
                 />
                 <TextInput
@@ -80,6 +83,7 @@ class cadastrar extends Component {
                     onChangeText={senha => this.setState({ senha })}
                     value={this.state.senha}
                     style={styles.input}
+                    placeholderTextColor='white'
 
                 />
                 <TextInput
@@ -87,6 +91,8 @@ class cadastrar extends Component {
                     onChangeText={senha1 => this.setState({ senha1 })}
                     value={this.state.senha1}
                     style={styles.input}
+                    placeholderTextColor='white'
+
                 />
                 <TouchableOpacity onPress={this._fazerCadastro} style={styles.btn}>
                     <Text style={{ color: 'white', marginTop: '3%' }}>Cadastrar</Text>

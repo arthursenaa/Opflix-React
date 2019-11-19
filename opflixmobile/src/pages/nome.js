@@ -92,7 +92,7 @@ class nome extends Component {
                     value={this.state.nome}
                     style={styles.input}
                 />
-                <TouchableOpacity style={styles.touch} onPress={() => this._decodeToken()}>
+                <TouchableOpacity style={styles.touch}>
                     <Text style={{ color: 'white', marginTop: '17%', textAlign: 'center' }}>Enviar</Text>
                 </TouchableOpacity>
                 <FlatList
