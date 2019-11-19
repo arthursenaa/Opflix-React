@@ -18,8 +18,8 @@ class SignIn extends Component {
   constructor() {
     super();
     this.state = {
-      email: 'erik@email.com',
-      senha: '123456',
+      email: null,
+      senha: null,
       // 123456
       // erik@email.com'
     };
@@ -28,21 +28,24 @@ class SignIn extends Component {
   }
 
   _logar = async () => {
-    await fetch('http://192.168.6.115:5000/api/login', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        senha: this.state.senha,
-      }),
-    })
+    if(this.state.email != null && this.state.senha != null){
+      await fetch('http://192.168.6.115:5000/api/login', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          senha: this.state.senha,
+        }),
+      })
       .then(resposta => resposta.json())
       .then(data => this._irParaFilme(data.token))
       .catch(erro => console.warn(erro));
-    // alert(this.state.senha)
+    } else {
+      alert("DIGITE EMAIL E SENHA EXISTENTE PARA LOGAR")
+    }
   };
 
   _irParaFilme = async (tokenOpFlix) => {

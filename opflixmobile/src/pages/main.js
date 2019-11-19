@@ -126,7 +126,7 @@ class main extends Component {
                                             <CollapseHeader >
                                                 <Text style={{ color: "white", fontSize: 15  }}>   {item.nome} </Text>
                                             </CollapseHeader>
-                                            <CollapseBody  style={{ backgroundColor: '#1a1a1a', borderColor: 'black' }}>
+                                            <CollapseBody  style={{ backgroundColor: '#1a1a1a', borderColor: 'black',borderBottomLeftRadius: 10 ,borderBottomRightRadius: 10 }}>
                                             <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
                                                 <Text style={styles.item}> - Duração : {item.duracao}</Text>
                                                 <Text style={styles.item}> - Classificação Indicativa : {item.classificacaoIndicativa}</Text>
@@ -156,7 +156,7 @@ class main extends Component {
                                             <CollapseHeader >
                                                 <Text style={{ color: "white", fontSize: 15 }}>   {item.nome} </Text>
                                             </CollapseHeader>
-                                            <CollapseBody style={{ backgroundColor: '#1a1a1a', borderColor: 'black' }}>
+                                            <CollapseBody style={{ backgroundColor: '#1a1a1a', borderColor: 'black' ,borderBottomLeftRadius: 10 ,borderBottomRightRadius: 10 }}>
                                                 <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
                                                 <Text style={styles.item}> - Duração : {item.duracao}</Text>
                                                 <Text style={styles.item}> - Classificação Indicativa : {item.classificacaoIndicativa}</Text>
@@ -187,7 +187,7 @@ class main extends Component {
                                             <CollapseHeader >
                                                 <Text style={{ color: "white", fontSize: 15 }}>   {item.nome} </Text>
                                             </CollapseHeader>
-                                            <CollapseBody style={{ backgroundColor: '#1a1a1a', borderColor: 'black' }}>
+                                            <CollapseBody style={{ backgroundColor: '#1a1a1a', borderColor: 'black', borderBottomLeftRadius: 10 ,borderBottomRightRadius: 10 }}>
 
                                                 <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
                                                 <Text style={styles.item}> - Duração : {item.duracao}</Text>
@@ -240,9 +240,15 @@ const styles = StyleSheet.create({
         marginTop: '10%',
         marginLeft: '15%',
         width: '70%',
+        borderColor: 'red',
+        borderWidth:1
     },
     item: {
-        color: "white", marginLeft: '10%'
+        color: "white",
+        marginLeft: '10%',
+        marginTop: 8,
+        marginBottom: 4,
+
     }
 })
 

@@ -32,7 +32,11 @@ class cadastrar extends Component {
 
     _fazerCadastro = (event) => {
         event.preventDefault();
-        if (this.state.senha === this.state.senha1) {
+        if (this.state.senha === this.state.senha1
+            && this.state.email != null 
+            && this.state.senha != null 
+            && this.state.nome != null 
+            ) {
             fetch("http://192.168.6.115:5000/api/login/cadastrar", {
                 method: 'POST',
                 headers: {
@@ -47,12 +51,25 @@ class cadastrar extends Component {
             })
                 .then(response => response.json())
                 .catch(erro => console.log(erro));
-            this.setState({ cadastrado: "Usuario Cadastrado" })
-            alert("O usuario"+ this.state.nome + " foi cadastrado")
-        } else {
+                alert("O usuario "+ this.state.nome + " foi cadastrado")
+                this._irParaLogin()
+            }  if (this.state.senha == null) {
+            alert("Digite uma senha para cadastrar")
+        } if (this.state.nome == null) {
+            alert("Digite um nome para cadastrar")
+        } if  (this.state.email == null) {
+            alert("Digite um email para cadastrar")
+        } if (this.state.senha != this.state.senha1) {
             alert("As Senhas Digitadas Estão Diferentes" )
         }
     }
+
+    _irParaLogin = async () => {
+          try {
+            this.props.navigation.navigate('AuthStack');
+          } catch (error) {
+          }
+      };
 
     render() {
         return (
@@ -97,8 +114,6 @@ class cadastrar extends Component {
                 <TouchableOpacity onPress={this._fazerCadastro} style={styles.btn}>
                     <Text style={{ color: 'white', marginTop: '3%' }}>Cadastrar</Text>
                 </TouchableOpacity>
-                {/* <Text style={{ color: "red", textAlign: "center", fontSize: "0.8em" }}>{this.state.erro}</Text> */}
-                {/* <Text style={{ color: "green", textAlign: "center", fontSize: "0.8em" }}>{this.state.cadastrado}</Text> */}
             </View>
         )
     }

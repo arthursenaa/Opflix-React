@@ -129,9 +129,9 @@ class filtro extends Component {
                             <ScrollView>
                                 <Collapse>
                                     <CollapseHeader>
-                                        <Text style={{ color: "white", fontSize: 15, marginTop: '3%' }}>   - {item.nome} </Text>
+                                        <Text style={{ color: "white", fontSize: 15, marginTop: '3%' }}>    -   {item.nome} </Text>
                                     </CollapseHeader>
-                                    <CollapseBody style={{ backgroundColor: '#343537', borderBottomLeftRadius: 15, borderBottomRightRadius: 15, marginTop: 5 }}>
+                                    <CollapseBody style={{ backgroundColor: '#343537', borderBottomLeftRadius: 15, borderBottomRightRadius: 15, marginTop: 5}}>
                                         <Text style={styles.item}> -  Sinopse :  {item.sinopse}</Text>
                                         <Text style={styles.item}> -  Duração :  {item.duracao}</Text>
                                         <Text style={styles.item}> -  Classificação Indicativa :  {item.classificacaoIndicativa}</Text>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
         width: '70%',
         marginTop: '5%',
         marginBottom: '15%',
-        borderRadius: 15
+        borderRadius: 15,
     },
     picker: {
         marginLeft: '5%',
