@@ -39,7 +39,7 @@ const MainNavigator = createBottomTabNavigator(
             inactiveBackgroundColor: '#1a1a1a',
             style: {
                 width: '100%',
-                height: 50
+                height: 50,
             }
         }
     },
