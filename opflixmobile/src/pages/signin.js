@@ -44,7 +44,7 @@ class SignIn extends Component {
       .then(data => this._irParaFilme(data.token))
       .catch(erro => console.warn(erro));
     } else {
-      alert("DIGITE EMAIL E SENHA EXISTENTE PARA LOGAR")
+      alert("DIGITE EMAIL E SENHA VALIDOS PARA LOGAR")
     }
   };
 
@@ -72,10 +72,13 @@ class SignIn extends Component {
     return (
       <View style={{ backgroundColor: 'black', height: "100%" }}>
         <StatusBar backgroundColor="black" />
+        {/* Logo Opflix */}
         <Image
           source={require('../assets/img/logo.png')}
           style={{ alignSelf: 'center', marginTop: 75 }}
         />
+
+        {/* Input Email e senha */}
           <TextInput
             placeholder="         Email"
             onChangeText={email => this.setState({ email })}
@@ -91,9 +94,13 @@ class SignIn extends Component {
             placeholderTextColor='white'
             secureTextEntry={true}
           />
+
+          {/* Btn Login */}
           <TouchableOpacity onPress={this._logar} style={styles.btn}>
             <Text style={{ color: 'white', marginTop: '3%' }}>Login</Text>
           </TouchableOpacity>
+
+          {/* Redirecionar para Cadastrar */}
           <TouchableOpacity style={{ width: '25%', alignSelf: 'center', marginTop: '5%' }} onPress={() => this.props.navigation.navigate('CadastroStack')}>
             <Text style={{ color: 'white', marginTop: '7%', textAlign: 'center' }}>Cadastrar-se</Text>
           </TouchableOpacity>

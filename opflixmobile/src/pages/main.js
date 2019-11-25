@@ -103,7 +103,6 @@ class main extends Component {
             >
 
                 <View style={{ backgroundColor: 'black', height: "100%", marginBottom: '5%' }}>
-
                     <StatusBar backgroundColor="black" />
 
                     <Text style={styles.Titulo} >Listas</Text>

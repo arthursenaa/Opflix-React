@@ -86,15 +86,20 @@ class nome extends Component {
             <View style={{ backgroundColor: 'black', height: "100%" }}>
                 <StatusBar backgroundColor="black" />
                 <Text style={styles.Titulo}>Buscar Por Nome</Text>
+                
+                {/* Input Para Nome do FIlme */}
                 <TextInput
                     placeholder="     Nome do Filme"
                     onChangeText={nome => this.setState({ nome })}
                     value={this.state.nome}
                     style={styles.input}
                 />
+                {/* btn de Enviar */}
                 <TouchableOpacity style={styles.touch}>
                     <Text style={{ color: 'white', marginTop: '10%', textAlign: 'center', fontSize: 20 }}>Enviar</Text>
                 </TouchableOpacity>
+
+                {/* Lista */}
                 <FlatList
                     style={styles.lista}
                     data={this.state.lancamento.filter(element => {

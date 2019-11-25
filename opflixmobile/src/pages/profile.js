@@ -51,24 +51,25 @@ class profile extends Component {
         return (
             <View style={{ backgroundColor: 'black', height: "100%" }}>
                 <StatusBar backgroundColor="black" />
+                {/* Img */}
                 <View style={styles.image}>
                     <Image
                         source={require('../assets/img/foto.png')}
                         style={{ alignSelf: 'center', marginTop: 10, height: 260, width: 250, }}
                     />
                 </View>
+
+                {/* Dados (email e nome) */}
                 <View style={{ marginTop: 20, marginLeft: '10%', width: '80%', marginBottom: 70 }}>
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginTop: 20, }}> Nome  :  {this.state.jwToken.nome} </Text>
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 20, marginTop: 20, }}> Email  :  {this.state.jwToken.email} </Text>
                 </View>
+
+                {/* Logout */}
                 <TouchableOpacity style={styles.btn} onPress={() => this.props.navigation.navigate('AuthStack')}>
                     <Text style={{ textAlign: 'center', fontSize: 18, fontWeight: 'bold' }}>Logout</Text>
                 </TouchableOpacity>
-
-
-
-
-
+                
             </View>
         )
     }

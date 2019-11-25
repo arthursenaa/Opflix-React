@@ -105,8 +105,8 @@ class filtro extends Component {
             <View style={{ backgroundColor: 'black', height: "100%" }}>
                 <StatusBar backgroundColor="black" />
                 <Text style={styles.Titulo}>Filtrar Por Genero</Text>
+                {/* Select */}
                 <View style={styles.ViewPicker}>
-
                     <Picker
                         selectedValue={this.state.generoEscolhido}
                         onValueChange={this._onChageValue.bind(this)}
@@ -117,6 +117,8 @@ class filtro extends Component {
                         })}
                     </Picker>
                 </View>
+                
+                {/*Lista Filtrada */}
                 <FlatList
                     style={styles.lista}
                     data={this.state.lancamento.filter(element => {
@@ -131,7 +133,7 @@ class filtro extends Component {
                                     <CollapseHeader >
                                         <Text style={{ color: "white", fontSize: 17, marginTop: '3%' }}>    -   {item.nome} </Text>
                                     </CollapseHeader>
-                                    <CollapseBody style={{ backgroundColor: '#343537', borderBottomLeftRadius: 15, borderBottomRightRadius: 15, marginTop: 5}}>
+                                    <CollapseBody style={{ backgroundColor: '#343537', borderBottomLeftRadius: 15, borderBottomRightRadius: 15, marginTop: 5 }}>
                                         <Text style={styles.item}> -  Sinopse :  {item.sinopse}</Text>
                                         <Text style={styles.item}> -  Duração :  {item.duracao}</Text>
                                         <Text style={styles.item}> -  Classificação Indicativa :  {item.classificacaoIndicativa}</Text>
@@ -186,7 +188,7 @@ const styles = StyleSheet.create({
         marginTop: '10%',
         width: '80%',
         borderRadius: 13,
-        fontSize:15,
+        fontSize: 15,
     }
 })
 
