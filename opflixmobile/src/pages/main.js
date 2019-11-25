@@ -112,7 +112,7 @@ class main extends Component {
                     <Collapse>
                         <CollapseHeader style={styles.collapse}>
                             <View>
-                                <Text style={{ textAlign: 'center', marginTop: '1%', fontSize: 17, fontWeight: 'bold' }}>Listar Filmes</Text>
+                                <Text style={{ textAlign: 'center', marginTop: '0.3%', fontSize: 20, fontWeight: 'bold' }}>Listar Filmes</Text>
                             </View>
                         </CollapseHeader>
                         <CollapseBody>
@@ -124,7 +124,7 @@ class main extends Component {
                                     <View>
                                         <Collapse>
                                             <CollapseHeader >
-                                                <Text style={{ color: "white", fontSize: 15  }}>   {item.nome} </Text>
+                                                <Text style={{ color: "white", fontSize: 17  }}>   {item.nome} </Text>
                                             </CollapseHeader>
                                             <CollapseBody  style={{ backgroundColor: '#1a1a1a', borderColor: 'black',borderBottomLeftRadius: 10 ,borderBottomRightRadius: 10 }}>
                                             <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
@@ -142,7 +142,7 @@ class main extends Component {
                     <Collapse>
                         <CollapseHeader style={styles.collapse}>
                             <View>
-                                <Text style={{ textAlign: 'center', marginTop: '1%', fontSize: 17, fontWeight: 'bold' }}>Ultimos Lançamentos</Text>
+                                <Text style={{ textAlign: 'center',marginTop: '0.3%', fontSize: 20, fontWeight: 'bold' }}>Ultimos Lançamentos</Text>
                             </View>
                         </CollapseHeader>
                         <CollapseBody>
@@ -154,7 +154,7 @@ class main extends Component {
                                     <View>
                                         <Collapse>
                                             <CollapseHeader >
-                                                <Text style={{ color: "white", fontSize: 15 }}>   {item.nome} </Text>
+                                                <Text style={{ color: "white", fontSize: 17 }}>   {item.nome} </Text>
                                             </CollapseHeader>
                                             <CollapseBody style={{ backgroundColor: '#1a1a1a', borderColor: 'black' ,borderBottomLeftRadius: 10 ,borderBottomRightRadius: 10 }}>
                                                 <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
@@ -172,7 +172,7 @@ class main extends Component {
                     <Collapse>
                         <CollapseHeader style={styles.collapse}>
                             <View>
-                                <Text style={{ textAlign: 'center', marginTop: '1%', fontSize: 17, fontWeight: 'bold' }}>Mais Antigos</Text>
+                                <Text style={{ textAlign: 'center', marginTop: '0.3%', fontSize: 20, fontWeight: 'bold' }}>Mais Antigos</Text>
                             </View>
                         </CollapseHeader>
                         <CollapseBody>
@@ -185,7 +185,7 @@ class main extends Component {
                                     <View>
                                         <Collapse>
                                             <CollapseHeader >
-                                                <Text style={{ color: "white", fontSize: 15 }}>   {item.nome} </Text>
+                                                <Text style={{ color: "white", fontSize: 17 }}>   {item.nome} </Text>
                                             </CollapseHeader>
                                             <CollapseBody style={{ backgroundColor: '#1a1a1a', borderColor: 'black', borderBottomLeftRadius: 10 ,borderBottomRightRadius: 10 }}>
 
@@ -222,8 +222,8 @@ const styles = StyleSheet.create({
     },
     lista: {
         backgroundColor: 'black',
-        marginLeft: '15%',
-        width: '70%',
+        marginLeft: '5%',
+        width: '90%',
         borderColor: 'red',
         borderWidth: 2,
         // marginTop: '15%',
@@ -238,18 +238,18 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 15,
         borderTopLeftRadius: 15,
         marginTop: '10%',
-        marginLeft: '15%',
-        width: '70%',
+        marginLeft: '5%',
+        width: '90%',
         borderColor: 'red',
         borderWidth:1
     },
     item: {
         color: "white",
-        marginLeft: '10%',
+        marginLeft: '5%',
         marginTop: 8,
         marginBottom: 4,
-
-    }
+        fontSize:15,
+    },
 })
 
 export default main;

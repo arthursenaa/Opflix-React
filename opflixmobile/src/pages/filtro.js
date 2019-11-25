@@ -128,8 +128,8 @@ class filtro extends Component {
                         <View>
                             <ScrollView>
                                 <Collapse>
-                                    <CollapseHeader>
-                                        <Text style={{ color: "white", fontSize: 15, marginTop: '3%' }}>    -   {item.nome} </Text>
+                                    <CollapseHeader >
+                                        <Text style={{ color: "white", fontSize: 17, marginTop: '3%' }}>    -   {item.nome} </Text>
                                     </CollapseHeader>
                                     <CollapseBody style={{ backgroundColor: '#343537', borderBottomLeftRadius: 15, borderBottomRightRadius: 15, marginTop: 5}}>
                                         <Text style={styles.item}> -  Sinopse :  {item.sinopse}</Text>
@@ -160,11 +160,13 @@ const styles = StyleSheet.create({
     },
     lista: {
         backgroundColor: '#1a1a1a',
-        marginLeft: '15%',
-        width: '70%',
+        marginLeft: '10%',
+        width: '80%',
         marginTop: '5%',
         marginBottom: '15%',
         borderRadius: 15,
+        borderColor: 'red',
+        borderWidth: 1.5,
     },
     picker: {
         marginLeft: '5%',
@@ -175,15 +177,16 @@ const styles = StyleSheet.create({
         marginBottom: '2%',
         color: "white",
         marginLeft: '10%',
-
+        fontSize: 17
     },
     ViewPicker: {
-        marginLeft: '15%',
+        marginLeft: '10%',
         backgroundColor: 'white',
         height: 50,
         marginTop: '10%',
-        width: '70%',
+        width: '80%',
         borderRadius: 13,
+        fontSize:15,
     }
 })
 

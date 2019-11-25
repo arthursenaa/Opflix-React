@@ -87,13 +87,13 @@ class nome extends Component {
                 <StatusBar backgroundColor="black" />
                 <Text style={styles.Titulo}>Buscar Por Nome</Text>
                 <TextInput
-                    placeholder="Nome do Filme"
+                    placeholder="     Nome do Filme"
                     onChangeText={nome => this.setState({ nome })}
                     value={this.state.nome}
                     style={styles.input}
                 />
                 <TouchableOpacity style={styles.touch}>
-                    <Text style={{ color: 'white', marginTop: '17%', textAlign: 'center' }}>Enviar</Text>
+                    <Text style={{ color: 'white', marginTop: '10%', textAlign: 'center', fontSize: 20 }}>Enviar</Text>
                 </TouchableOpacity>
                 <FlatList
                     style={styles.lista}
@@ -106,60 +106,63 @@ class nome extends Component {
                         <View>
                             <Collapse>
                                 <CollapseHeader>
-                                    <Text style={{ color: "white", fontSize: 15, marginTop: '5%',marginBottom: '2%' }}>   - {item.nome} </Text>
+                                    <Text style={{ color: "white", fontSize: 18, marginTop: '5%', marginBottom: '2%' }}>   - {item.nome} </Text>
                                 </CollapseHeader>
                                 <CollapseBody style={{ backgroundColor: '#343537', borderBottomLeftRadius: 15, borderBottomRightRadius: 15, }}>
                                     <Text style={styles.item}> -- Sinopse : {item.sinopse}</Text>
                                     <Text style={styles.item}> - Duração : {item.duracao}</Text>
                                     <Text style={styles.item}> - Classificação Indicativa : {item.classificacaoIndicativa}</Text>
                                 </CollapseBody>
-                                </Collapse>
+                            </Collapse>
                         </View>
-                            )}
-                        />
+                    )}
+                />
             </View>
-                    )
-                    }
+        )
+    }
 }
 
-                const styles = StyleSheet.create({
-                    tabBarEstilizacao: {
-                    width: 30, height: 30, tintColor: 'white'
-            },
+const styles = StyleSheet.create({
+    tabBarEstilizacao: {
+        width: 30, height: 30, tintColor: 'white'
+    },
     Titulo: {
-                    color: "white",
-                fontSize: 25,
-                marginTop: '10%',
-                textAlign: 'center',
-                fontWeight: 'bold'
-            },
+        color: "white",
+        fontSize: 25,
+        marginTop: '10%',
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
     input: {
-                    backgroundColor: "white",
-                marginLeft: '15%',
-                width: '45%',
-                marginTop: '10%',
-                borderTopLeftRadius: 15,
-                borderBottomLeftRadius: 15,
-                borderColor: 'white',
-                borderStyle: 'solid',
-                color: 'black',
-                fontSize: 20
-            },
+        backgroundColor: "white",
+        marginLeft: '10%',
+        width: '55%',
+        marginTop: '10%',
+        borderTopLeftRadius: 15,
+        borderBottomLeftRadius: 15,
+        borderColor: 'white',
+        borderStyle: 'solid',
+        color: 'black',
+        fontSize: 20
+    },
     lista: {
-                    backgroundColor: '#1a1a1a',
-                marginLeft: '15%',
-                width: '70%',
-                marginTop: '10%',
-                marginBottom: '15%',
-                borderRadius: 15
-            },
+        backgroundColor: '#1a1a1a',
+        marginLeft: '10%',
+        width: '80%',
+        marginTop: '10%',
+        marginBottom: '15%',
+        borderRadius: 15,
+        borderColor: 'red',
+        borderWidth: 1.5,
+    },
     item: {
-                    marginTop: '2%',
-                marginBottom:'2%',
-                color: "white",
-                marginLeft: '10%',
-            },
-    touch: {width: '20%', marginTop: '-12%', marginLeft: '65%', backgroundColor: 'grey', height: 50, borderBottomRightRadius: 15, borderTopRightRadius: 15, }
-            })
-            
+        marginTop: '2%',
+        marginBottom: '2%',
+        color: "white",
+        marginLeft: '10%',
+        fontSize: 15,
+    },
+    touch: { width: '25%', marginTop: '-12%', marginLeft: '65%', backgroundColor: 'grey', height: 50, borderBottomRightRadius: 15, borderTopRightRadius: 15, }
+})
+
 export default nome;

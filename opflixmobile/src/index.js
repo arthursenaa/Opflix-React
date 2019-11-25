@@ -7,6 +7,7 @@ import SignInScreen from './pages/signin';
 import CadastrarScreen from './pages/cadastrar';
 import PorNomeScreen from './pages/nome';
 import FiltroScreen from './pages/filtro';
+import ProfileScreen from './pages/profile';
 
 const AuthStack = createStackNavigator({
     Sign: { screen: SignInScreen },
@@ -18,6 +19,12 @@ const CadastroStack = createStackNavigator({
     },
 });
 
+// const ProfileStack = createStackNavigator({
+//     Profile: {
+//         screen: ProfileScreen,
+//     },
+// });
+
 const MainNavigator = createBottomTabNavigator(
     {
         Nome: {
@@ -28,6 +35,9 @@ const MainNavigator = createBottomTabNavigator(
         },
         Filtro: {
             screen: FiltroScreen,
+        },
+        Profile: {
+            screen: ProfileScreen,
         }
     },
     {
