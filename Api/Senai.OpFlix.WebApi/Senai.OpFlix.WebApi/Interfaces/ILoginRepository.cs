@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Interfaces
 {
-    interface ILoginRepository
+    public interface ILoginRepository
     {
         Usuario BuscarPorEmailESenha(LoginViewModel login);
         void CadastrarCLIENTE(Usuario usuario);

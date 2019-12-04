@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Interfaces
 {
-    interface ICategoriaRepository
+    public interface ICategoriaRepository
     {
         List<Genero> ListarCategorias();
         void CadastrarCategorias(Genero genero);

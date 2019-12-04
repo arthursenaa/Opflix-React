@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Interfaces
 {
-    interface ILancamentoRepository
+    public interface ILancamentoRepository
     {
         List<Lancamento> ListarLancamentos();
         void CadastrarLancamento(Lancamento lancamento);

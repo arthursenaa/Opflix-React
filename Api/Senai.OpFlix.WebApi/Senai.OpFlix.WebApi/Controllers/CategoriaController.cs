@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.OpFlix.WebApi.Domains;
+using Senai.OpFlix.WebApi.Interfaces;
 using Senai.OpFlix.WebApi.Repositories;
 
 namespace Senai.OpFlix.WebApi.Controllers
@@ -16,7 +17,12 @@ namespace Senai.OpFlix.WebApi.Controllers
     public class CategoriaController : ControllerBase
     {
 
-        CategoriaRepository CategoriaRepository = new CategoriaRepository();
+        public ICategoriaRepository CategoriaRepository { get; set; }
+
+        public CategoriaController()
+        {
+            CategoriaRepository = new CategoriaRepository();
+        }
 
         //[Authorize]
         [HttpGet]

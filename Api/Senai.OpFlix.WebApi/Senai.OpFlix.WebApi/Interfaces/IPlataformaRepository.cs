@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Interfaces
 {
-    interface IPlataformaRepository
+    public interface IPlataformaRepository
     {
         void CadastrarPlataforma(Plataforma plataforma);
         List<Plataforma> ListarPlataforma();
