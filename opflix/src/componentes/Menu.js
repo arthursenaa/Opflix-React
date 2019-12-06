@@ -21,6 +21,7 @@ function Menu() {
                                 <Nav.Link href="/CadastrarFilme" style={{ fontSize: "Large" }}>Cadastrar Filme </Nav.Link>
                                 <Nav.Link href="/CadastrarCategoria" style={{ fontSize: "Large" }}>Cadastrar Genero </Nav.Link>
                                 {/* <Nav.Link href="/Mapa" style={{ fontSize: "Large" }}>Localização</Nav.Link> */}
+                                <Nav.Link href="/Mapa" style={{ fontSize: "Large",color:"white"}}>Localizações </Nav.Link>
                                 <Nav.Link href="/" style={{ fontSize: "Large",color:"white"}}>Logout </Nav.Link>
                             </Nav>
                         ) : (

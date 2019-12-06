@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Senai.OpFlix.WebApi.Domains;
+using Senai.OpFlix.WebApi.Interfaces;
 using Senai.OpFlix.WebApi.Repositories;
 using Senai.OpFlix.WebApi.ViewModel;
 
@@ -19,7 +20,9 @@ namespace Senai.OpFlix.WebApi.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        LoginRepository LoginRepository = new LoginRepository();
+        public ILoginRepository LoginRepository { get; set; }
+
+        //LoginRepository LoginRepository = new LoginRepository();
 
         public LoginController()
         {

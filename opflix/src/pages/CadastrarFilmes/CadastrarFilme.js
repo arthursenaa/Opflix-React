@@ -9,17 +9,30 @@ export default class CadastrarFilme extends Component {
     constructor() {
         super();
         this.state = {
-            nome: "",
-            sinopse: "",
-            duracao: "",
-            lancamentoData: "",
-            idPlataforma: "",
-            idTipo: "",
-            idGenero: "",
-            classificacaoIndicativa: "",
+            nome: null,
+            sinopse: null,
+            duracao: null,
+            lancamentoData: null,
+            idPlataforma: null,
+            idTipo: null,
+            nomeTipo: [
+                { nome: "Filme", id: 1 },
+                { nome: "Série", id: 2 }
+            ],
+            idGenero: null,
+            classificacaoIndicativa: null,
+            faixaEtaria: [
+                { Classificação: "L" },
+                { Classificação: "10" },
+                { Classificação: "13" },
+                { Classificação: "16" },
+                { Classificação: "18" }
+            ],
             erro: "",
             generos: [],
-            plataforma: []
+            plataforma: [],
+            longitude: "",
+            latitude: "",
         }
     }
     cadastroNome = (event) => {
@@ -53,6 +66,12 @@ export default class CadastrarFilme extends Component {
     cadastrolancamentoData = (event) => {
         this.setState({ lancamentoData: event.target.value })
     }
+    cadastroLatitude = (event) => {
+        this.setState({ latitude: event.target.value })
+    }
+    cadastroLongitude = (event) => {
+        this.setState({ longitude : event.target.value })
+    }
 
     listarGenero = () => {
         // eventDefault();
@@ -65,7 +84,7 @@ export default class CadastrarFilme extends Component {
             .then(response => response.json())
             .then(data => this.setState({ generos: data }));
     }
-    
+
     listarPlataforma = () => {
         // eventDefault();
         fetch('http://192.168.6.115:5000/api/plataforma', {
@@ -82,30 +101,37 @@ export default class CadastrarFilme extends Component {
 
     cadastrarFilme = (event) => {
         event.preventDefault();
-
-        fetch('http://192.168.6.115:5000/api/lancamento', {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix')
-            },
-            body: JSON.stringify({
+        if (this.state.nome != null && this.state.sinopse != null && this.state.duracao != null && this.state.lancamentoData != null && this.state.idPlataforma != null && this.state.idTipo != null) {
+            Axios.post("http://192.168.6.115:5000/api/lancamento", {
                 nome: this.state.nome,//Ok
                 sinopse: this.state.sinopse,//Ok
                 duracao: this.state.duracao,//Ok
-                lancamentoData: this.state.lancamentoData,//Ok
+                dataLancamento: this.state.lancamentoData,//Ok
                 idPlataforma: this.state.idPlataforma,//ok
                 idTipo: this.state.idTipo,
                 idGenero: this.state.idGenero,//Ok sem teste
                 classificacaoIndicativa: this.state.classificacaoIndicativa,//Ok sem teste
 
-            }),
-        })
-            .then(response => response.json())
-            .catch(error => console.log(error))
-        this.setState({ sucesso: "Filme Cadastrado" })
+            }, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix')
+                    },
 
+                })
+                .then(response => response.json())
+                .catch(error => console.log(error))
+            this.setState({ sucesso: "Filme Cadastrado" })
+
+            Axios.post("http://192.168.6.115:5000/api/localization", {
+                nome:this.state.nome,
+                longitude: this.state.longitude,
+                latitude: this.state.latitude,
+            })
+        } else {
+            this.setState({ erro: "Erro ao Cadastrar" })
+        }
     }
 
 
@@ -118,10 +144,10 @@ export default class CadastrarFilme extends Component {
         return (
             <div className="divCadastro">
                 <Menu />
-                <div className="divForm" style={{ marginTop: "7.2em" }}>
+                <div className="divForm" style={{ marginTop: "7.2em", width: "50%", marginLeft: "25%" }}>
 
 
-                    <form method="POST" onSubmit={this.cadastrarAdm}>
+                    <form method="POST" onSubmit={this.cadastrarFilme}>
                         <h1>Cadastrar Filme</h1>
 
                         <div className="item">
@@ -133,6 +159,7 @@ export default class CadastrarFilme extends Component {
                                 id="login__nome"
                                 onChange={this.cadastroNome}
                                 value={this.state.nome}
+                            //style={{width:"100%",marginLeft:"-10%"}}
                             />
                         </div>
                         <br></br>
@@ -156,8 +183,7 @@ export default class CadastrarFilme extends Component {
                                 value={this.state.duracao}
                             />
                         </div>
-                        <br></br>
-                        <label style={{ fontSize: "85%", marginLeft: "-40%" }}>Data de Lançamento:</label>
+                        <label style={{ fontSize: "85%", marginLeft: "-20%" }}>Data de Lançamento:</label>
                         <div className="item">
                             <input
                                 className="input__login"
@@ -171,11 +197,11 @@ export default class CadastrarFilme extends Component {
                             />
                         </div>
                         <br></br>
-                        <div style={{ display: "flex", marginLeft: '-5%' }}>
+                        {/* <div style={{ display: "flex", marginLeft: '-5%', justifyContent: "space-between" }}> */}
 
-                            
-                            <div className="item" >
-                                <select style={{ width: "50%", fontSize: "0.8em" }} onChange={this.cadastroGenero} >                                    
+
+                            <div className="item" style={{ marginLeft: "-30%", }}>
+                                <select style={{ width: "230%", fontSize: "0.8em" }} onChange={this.cadastroGenero} >
                                     {this.state.generos.map(element => {
                                         return (
                                             <option value={element.idGenero} key={element.idGenero}>{element.nome}</option>
@@ -183,36 +209,67 @@ export default class CadastrarFilme extends Component {
                                     })}
                                 </select>
                             </div>
-
-                            <div className="item" >
-                                <select onChange={this.cadastroPlataforma}  style={{ width: "50%", fontSize: "0.8em" }} >
+                            <br></br>
+                            <div className="item" style={{ marginLeft: "-22%" }}>
+                                <select onChange={this.cadastroPlataforma} style={{ width: "170%", fontSize: "0.8em" }} >
                                     {this.state.plataforma.map(element => {
                                         return (
-                                            <option value={this.state.idPlataforma} key={this.state.idPlataforma}>{element.plataforma1}</option>
+                                            <option value={element.idPlataforma} key={element.idPlataforma}>{element.plataforma1}</option>
                                         );
                                     })}
                                 </select>
                             </div>
-                            <div className="item" >
-                                <select onchange={this.cadastroClassificacao} placeholder="Classificação" style={{ width: "100%", fontSize: "0.8em" }} >
-                                    <option value="L">Livre</option>
-                                    <option value="13">+10</option>
-                                    <option value="13">+13</option>
-                                    <option value="16">+16</option>
-                                    <option value="18">+18</option>
+                            <br></br>
+
+                        {/* </div>
+                        <div style={{ display: "flex", marginLeft: '-5%' }}> */}
+                            <div className="item" style={{ marginLeft: "-47%"}}>
+                                <select onChange={this.cadastroClassificacao} style={{ width: "832%", fontSize: "0.8em" }} >
+                                    {this.state.faixaEtaria.map(element => {
+                                        return (
+                                            <option value={element.Classificação} key={element.Classificação}>{element.Classificação}</option>
+                                        );
+                                    })}
                                 </select>
                             </div>
-                            <div className="item" >
-                                <select onchange={this.cadastroTipo} placeholder="Tipo" style={{ width: "100%", fontSize: "0.8em" }} >
-                                    <option value="1">Filme</option>
-                                    <option value="2">Série</option>
+                            <br></br>
+                            <div className="item" style={{ marginLeft: "-43%" }}>
+                                <select onChange={this.cadastroTipo} style={{ width: "535%", fontSize: "0.8em" }} >
+                                    {this.state.nomeTipo.map(element => {
+                                        return (
+                                            <option value={element.id} key={element.id}>{element.nome}</option>
+                                        );
+                                    })}
                                 </select>
                             </div>
+                        {/* </div> */}
+                        <br></br>
+                        <div style={{display:"flex"}}>
+                        <input
+                                className="input__login"
+                                placeholder="Longitude"
+                                type="text"
+                                name="password"
+                                id="login__password"
+                                onChange={this.cadastroLongitude}
+                                value={this.state.longitude}
+                                style={{ height:35,width:"32.2%",marginLeft:"18.4%" }}
+                            />
+                            <input
+                                className="input__login"
+                                placeholder="Latitude"
+                                type="text"
+                                // name="password"
+                                // id="login__password"
+                                onChange={this.cadastroLatitude}
+                                value={this.state.latitude}
+                                style={{ height:35, width:"32%"}}
+                            />
                         </div>
                         <br></br>
                         <div className="item">
 
-                            <button className="btn btn__login" id="btn__login" onClick={this.cadastrarFilme} style={{ backgroundcolor: "red" }}>
+                            <button className="btn btn__login" id="btn__login" style={{ backgroundcolor: "red" }}>
                                 Enviar
                             </button >
                         </div>
@@ -222,7 +279,9 @@ export default class CadastrarFilme extends Component {
                             style={{ color: "green", textAlign: "center", fontSize: "0.8em" }}
                         >
                             {this.state.sucesso}
-                            {this.state.erro400}
+                        </p>
+                        <p className="text__login"
+                            style={{ color: "red", textAlign: "center", fontSize: "0.8em" }}>
                             {this.state.erro}
                         </p>
                     </form>
