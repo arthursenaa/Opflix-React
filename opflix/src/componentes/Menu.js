@@ -21,7 +21,7 @@ function Menu() {
                                 <Nav.Link href="/CadastrarFilme" style={{ fontSize: "Large" }}>Cadastrar Filme </Nav.Link>
                                 <Nav.Link href="/CadastrarCategoria" style={{ fontSize: "Large" }}>Cadastrar Genero </Nav.Link>
                                 {/* <Nav.Link href="/Mapa" style={{ fontSize: "Large" }}>Localização</Nav.Link> */}
-                                <Nav.Link href="/Mapa" style={{ fontSize: "Large",color:"white"}}>Localizações </Nav.Link>
+                                <Nav.Link href="/Mapa" style={{ fontSize: "Large"}}>Localizações </Nav.Link>
                                 <Nav.Link href="/" style={{ fontSize: "Large",color:"white"}}>Logout </Nav.Link>
                             </Nav>
                         ) : (
@@ -29,7 +29,7 @@ function Menu() {
                                 <Nav.Link href="#Filmes" style={{ fontSize: "Large" }}>Lista de Filmes</Nav.Link>
                                 <Nav.Link href="#Ultimos" style={{ fontSize: "Large" }}>Ultimos Lançamentos</Nav.Link>
                                 <Nav.Link href="#Antigos" style={{ fontSize: "Large" }}>Mais Antigos </Nav.Link>
-                                <Nav.Link href="/" style={{ fontSize: "Large" }}>Logout </Nav.Link>
+                                <Nav.Link href="/" style={{ fontSize: "Large" }} onClick={localStorage.removeItem('usuario-opflix')}>Logout </Nav.Link>
                             </Nav>)
                 }}
                     {/* <Nav.Link href="#Ultimos" style={{fontSize:"Large"}}>Ultimos Lançamentos</Nav.Link> */}

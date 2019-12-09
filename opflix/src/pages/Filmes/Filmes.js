@@ -8,13 +8,6 @@ import './Filmes.css';
 import { parseJwt } from '../../services/auth';
 
 
-//Fazer Excluir Filmes 
-//Fazer pagina de Cadastrar Filmes , Generos e Plataformas
-//Fazer Atualizar Filmes
-//Mensagem de Cadastrar user com sucesso
-//Terminar Cadastro de adm 
-// fAZER listar por genero
-
 export default class Filmes extends Component {
     constructor() {
         super();
@@ -151,9 +144,8 @@ export default class Filmes extends Component {
                                                                     <td>
                                                                         <ButtonToolbar style={{width:"50%" , marginLeft:"38%"}}>
                                                                             <Button variant="primary" size="sm" 
-                                                                            // onClick={this.setState({idExcluir:element.idLancamentos})}
-                                                                            // onSubmit={}
                                                                             // onClick={this.setState({idExcluir: element.idLancamentos})}
+                                                                            // onDoubleClick={this.excluirFilme}
                                                                             >
                                                                                 Excluir
                                                                         </Button>

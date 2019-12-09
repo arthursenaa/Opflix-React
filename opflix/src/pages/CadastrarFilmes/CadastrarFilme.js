@@ -125,7 +125,7 @@ export default class CadastrarFilme extends Component {
             this.setState({ sucesso: "Filme Cadastrado" })
 
             Axios.post("http://192.168.6.115:5000/api/localization", {
-                nome:this.state.nome,
+                NomeLancamento: this.state.nome,
                 longitude: this.state.longitude,
                 latitude: this.state.latitude,
             })
