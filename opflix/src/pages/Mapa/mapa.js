@@ -36,6 +36,7 @@ class Mapa extends Component {
     }
 
     componentDidMount() {
+        console.log(this.state.local)
         this.listarLocalizacao();
     }
 
@@ -45,30 +46,35 @@ class Mapa extends Component {
                 lat: element.latitude,
                 lng: element.longitude
             }}
-                onClick={() => console.log("You clicked me!")} />
+                onClick={() => <p>{element.nomeLancamento}</p>} />
         })
     }
 
     render() {
         return (
-            <div style={{ backgroundColor: "#1C1C1C" }}>
-
+            <div style={{ backgroundColor: "#1C1C1C", width: "100%" }}>
                 <Menu />
                 <br></br>
                 <br></br>
                 <br></br>
                 <br></br>
-                <div >
-                    <div style={{ height: '82vh', marginLeft: "8%", marginRight: "8%", borderWidth: 15, border: "solid", borderColor: "Grey" }}>
-                        <Map
-                            google={this.props.google}
-                            zoom={8}
-                            initialCenter={{ lat: 47.444, lng: -122.176 }}
-                            style={{width:"83.59%", height: '81.2vh'}}
-                        >
-                            {this.displayMarkers()}
-                        </Map>
-                    </div>
+                <div style={{ height: '82vh', marginLeft: "8%", marginRight: "8%", borderWidth: 15, border: "solid", borderColor: "Grey" }}>
+                    <Map
+                        google={this.props.google}
+                        zoom={8}
+                        initialCenter={{ lat: -23.4549645, lng: -46.6960216 }}
+                        style={{ width: "83.59%", height: '81.2vh' }}
+                    >
+
+                        {this.state.local.map(element => {
+                            return (
+                                <Marker position={{ lat: element.latitude, lng: element.longitude }} />
+                            );
+                        })}
+
+                        {this.displayMarkers()}
+
+                    </Map>
                 </div>
                 <br></br>
                 <br></br>
