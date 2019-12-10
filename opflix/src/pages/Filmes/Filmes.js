@@ -145,7 +145,7 @@ export default class Filmes extends Component {
                                                                         <ButtonToolbar style={{width:"50%" , marginLeft:"38%"}}>
                                                                             <Button variant="primary" size="sm" 
                                                                             // onClick={this.setState({idExcluir: element.idLancamentos})}
-                                                                            // onDoubleClick={this.excluirFilme}
+                                                                            // onClick={this.excluirFilme}
                                                                             >
                                                                                 Excluir
                                                                         </Button>
