@@ -120,9 +120,12 @@ export default class CadastrarFilme extends Component {
                     },
 
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (response.status === 200) {
+                        this.setState({ sucesso: "Filme Cadastrado" })
+                    }
+                })
                 .catch(error => console.log(error))
-            this.setState({ sucesso: "Filme Cadastrado" })
 
             Axios.post("http://192.168.6.115:5000/api/localization", {
                 NomeLancamento: this.state.nome,
@@ -246,23 +249,20 @@ export default class CadastrarFilme extends Component {
                         <br></br>
                         <div style={{display:"flex"}}>
                         <input
-                                className="input__login"
-                                placeholder="Longitude"
-                                type="text"
-                                name="password"
-                                id="login__password"
-                                onChange={this.cadastroLongitude}
+                                
                                 value={this.state.longitude}
                                 style={{ height:35,width:"32.2%",marginLeft:"18.4%" }}
+                                className="input__login"
+                                placeholder="Latitude"
+                                type="text"   
+                                onChange={this.cadastroLatitude}
+                                value={this.state.latitude}
                             />
                             <input
                                 className="input__login"
-                                placeholder="Latitude"
+                                placeholder="Longitude"
                                 type="text"
-                                // name="password"
-                                // id="login__password"
-                                onChange={this.cadastroLatitude}
-                                value={this.state.latitude}
+                                onChange={this.cadastroLongitude}
                                 style={{ height:35, width:"32%"}}
                             />
                         </div>

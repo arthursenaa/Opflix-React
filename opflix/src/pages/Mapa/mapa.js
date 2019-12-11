@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Accordion, Card, Button, Table, ButtonToolbar } from 'react-bootstrap';
 import Menu from '../../componentes/Menu.js';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker,InfoWindow } from 'google-maps-react';
 // import Marker from 'google-map-react';
 // import Marker from '../../assets/img/marker.png';
 
@@ -39,47 +39,40 @@ class Mapa extends Component {
         console.log(this.state.local)
         this.listarLocalizacao();
     }
-
-    displayMarkers = () => {
-        return this.state.local.map((element, index) => {
-            return <Marker key={index} id={element.nome} position={{
-                lat: element.latitude,
-                lng: element.longitude
-            }}
-                onClick={() => <p>{element.nomeLancamento}</p>} />
-        })
-    }
-
     render() {
         return (
-            <div style={{ backgroundColor: "#1C1C1C", width: "100%" }}>
+            <div style={{ backgroundColor: "#1C1C1C" }}>
+
                 <Menu />
+                {/* <br></br>
                 <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div style={{ height: '82vh', marginLeft: "8%", marginRight: "8%", borderWidth: 15, border: "solid", borderColor: "Grey" }}>
-                    <Map
-                        google={this.props.google}
-                        zoom={8}
-                        initialCenter={{ lat: -23.4549645, lng: -46.6960216 }}
-                        style={{ width: "83.59%", height: '81.2vh' }}
-                    >
+                <br></br> */}
+                {/* <br></br> */}
+                {/* <div style={{ height: '82vh', marginLeft: "8%", width:"84%", border: "solid", borderColor: "Grey" }}> */}
 
-                        {this.state.local.map(element => {
-                            return (
-                                <Marker position={{ lat: element.latitude, lng: element.longitude }} />
-                            );
-                        })}
 
-                        {this.displayMarkers()}
+                <Map
+                    google={this.props.google}
+                    zoom={4}
+                    initialCenter={{ lat: -23.4549645, lng: -46.6960216 }}
 
-                    </Map>
-                </div>
+                // style={{height: '90%',marginBottom:"-50%" }}
+
+                >
+                    {this.state.local.map(element => {
+                        return (
+                            <Marker label={element.nomeLancamento} color="blue" position={{ lat: element.latitude, lng: element.longitude }} />
+                            
+                        );
+                    })}
+
+
+                </Map>
+                {/* </div> */}
+                {/* <br></br>
                 <br></br>
                 <br></br>
-                <br></br>
-                <div style={{ marginLeft: "8%", marginRight: "8%", minHeight: "84.2vh" }}>
+                <div style={{ marginLeft: "8%",width:"84%"}}>
                     <Table striped bordered hover variant="dark">
                         <thead>
                             <tr>
@@ -101,6 +94,9 @@ class Mapa extends Component {
                         </tbody>
                     </Table>
                 </div>
+                <br></br>
+                <br></br>
+                <br></br> */}
             </div>
         );
     }

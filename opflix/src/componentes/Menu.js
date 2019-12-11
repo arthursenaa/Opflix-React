@@ -31,7 +31,7 @@ function Menu() {
                                 <Nav.Link href="#Antigos" style={{ fontSize: "Large" }}>Mais Antigos </Nav.Link>
                                 <Nav.Link href="/" style={{ fontSize: "Large"}} onClick={localStorage.removeItem('usuario-opflix')}>Logout </Nav.Link>
                             </Nav>)
-                }}
+                }
                     {/* <Nav.Link href="#Ultimos" style={{fontSize:"Large"}}>Ultimos Lançamentos</Nav.Link> */}
                 {/* <Nav.Link href="/Home">Pricing</Nav.Link> */}
 

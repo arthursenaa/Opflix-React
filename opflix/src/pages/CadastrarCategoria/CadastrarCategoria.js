@@ -32,9 +32,12 @@ export default class CadastroAdm extends Component {
                     'Content-Type': 'application/json'
                 },
             }) 
-                .then(response => this.listarCategoria())
+            .then(response => {
+                if (response.status === 200) {
+                    this.setState({ sucesso: "Gênero Cadastrado" })
+                }
+            })
                 .catch(erro => console.log(erro));
-                this.setState({ sucesso: "Gênero Cadastrado" })
 
         } else {
             this.setState({ erro: "Erro ao cadastrar tente novamente" })
