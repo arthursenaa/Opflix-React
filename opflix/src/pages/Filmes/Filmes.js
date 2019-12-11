@@ -7,7 +7,6 @@ import { Accordion, Card, Button, Table, ButtonToolbar } from 'react-bootstrap';
 import './Filmes.css';
 import { parseJwt } from '../../services/auth';
 
-
 export default class Filmes extends Component {
     constructor() {
         super();
@@ -24,6 +23,8 @@ export default class Filmes extends Component {
             // generoNome: [],
         }
     }
+
+
 
     //Tabela Filme
     listarFilme = () => {
@@ -96,6 +97,9 @@ export default class Filmes extends Component {
         // console.log(idExcluir)
     }
 
+    // componentWillUpdate(){
+    //     this.filmeExluir();
+    // }
 
     render() {
         return (
@@ -142,10 +146,12 @@ export default class Filmes extends Component {
                                                                     <td>{element.idTipoNavigation.tipo1}</td>
                                                                     <td>{element.classificacaoIndicativa}</td>
                                                                     <td>
-                                                                        <ButtonToolbar style={{width:"50%" , marginLeft:"38%"}}>
+                                                                        <ButtonToolbar style={{width:"50%" , marginLeft:"38%"}} >
                                                                             <Button variant="primary" size="sm" 
                                                                             // onClick={this.setState({idExcluir: element.idLancamentos})}
                                                                             // onClick={this.excluirFilme}
+                                                                            // value = {element.idLancamentos}
+                                                                            // key = { element}
                                                                             >
                                                                                 Excluir
                                                                         </Button>
