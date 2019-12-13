@@ -30,12 +30,14 @@ export default class Filmes extends Component {
     listarFilme = () => {
         fetch('http://192.168.6.115:5000/api/lancamento', {
             headers: {
+            
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
                 'Content-Type': 'application/json'
             },
         })
             .then(response => response.json())
-            .then(data => this.setState({ filmes: data }));
+            .then(data => this.setState({ filmes: data }))
+            .catch(error => console.log(error))
     }
 
     // listar5
@@ -47,7 +49,9 @@ export default class Filmes extends Component {
             },
         })
             .then(response => response.json())
-            .then(data => this.setState({ ultimos: data }));
+            .then(data => this.setState({ ultimos: data }))
+            .catch(error => console.log(error))
+
     }
     //MaisAntigos
     maisAntigos = () => {
@@ -58,34 +62,39 @@ export default class Filmes extends Component {
             },
         })
             .then(response => response.json())
-            .then(data => this.setState({ antigos: data }));
+            .then(data => this.setState({ antigos: data }))
+            .catch(error => console.log(error))
+
         // console.log(this.state.antigos)
     }
     //Por Genero
     listarGenero = () => {
         // eventDefault();
-        fetch('http://192.168.6.115:5000/api/categoria', {
+        Axios('http://192.168.6.115:5000/api/categoria', {
             headers: {
+                'Accept': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
                 'Content-Type': 'application/json'
             },
         })
             .then(response => response.json())
-            .then(data => this.setState({ generos: data }));
+            .then(data => this.setState({ generos: data }))
+            .catch(error => console.log(error))
+
     }
     //Excluir
 
-    excluirFilme = () => {
-        // eventDefault();
-        Axios.delete('http://192.168.6.115:5000/api/lancamento/' + this.state.idExcluir , {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
-                'Content-Type': 'application/json'
-            },
-        })
-            .then(response => response.json())
-            .then(data => this.setState({ generos: data }));
-    }
+    // excluirFilme = () => {
+    //     // eventDefault();
+    //     Axios.delete('http://192.168.6.115:5000/api/lancamento/' + this.state.idExcluir , {
+    //         headers: {
+    //             'Authorization': 'Bearer ' + localStorage.getItem("usuario-opflix"),
+    //             'Content-Type': 'application/json'
+    //         },
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => this.setState({ generos: data }));
+    // }
 
     componentDidMount() {
         this.listarFilme();
@@ -113,14 +122,14 @@ export default class Filmes extends Component {
                 <div className="divFilme">
                     <Accordion defaultActiveKey="0">
                         <Card>
-                            <Card.Header style={{ backgroundColor: "Black" }}>
+                            <Card.Header style={{ backgroundColor: "Black" }} id="Filmes">
                                 <Accordion.Toggle as={Button} variant="link" eventKey="0" style={{ color: "white" }}>
                                     Listar Filmes
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
                                 <Card.Body>
-                                    <div id="Filmes">
+                                    <div >
                                         {parseJwt().permissao === '2' ?
                                             (
                                                 <Table striped bordered hover variant="dark">
@@ -205,14 +214,14 @@ export default class Filmes extends Component {
                         <br></br>
                         <br></br>
                         <Card>
-                            <Card.Header style={{ backgroundColor: "Black" }}>
+                            <Card.Header style={{ backgroundColor: "Black" }} id="Ultimos">
                                 <Accordion.Toggle as={Button} variant="link" eventKey="1" style={{ color: "white" }}>
                                     Ultimos Lançamentos
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="1">
                                 <Card.Body>
-                                    <div id="Ultimos">
+                                    <div >
                                         {/* UltimosLancamentos */}
                                         <Table striped bordered hover variant="dark">
                                             <thead>
@@ -221,8 +230,6 @@ export default class Filmes extends Component {
                                                     <th>#</th>
                                                     <th>Filme</th>
                                                     <th>Duração</th>
-                                                    {/* <th>Genero</th> */}
-                                                    {/* <th>Tipo</th> */}
                                                     <th>Classificação</th>
                                                     <th>Sinopse</th>
                                                 </tr>
@@ -234,8 +241,7 @@ export default class Filmes extends Component {
                                                             <td>{element.idLancamentos}</td>
                                                             <td>{element.nome}</td>
                                                             <td>{element.duracao}</td>
-                                                            {/* <td>{element.idGeneroNavigation.nome}</td> */}
-                                                            {/* <td>{element.idTipoNavigation.tipo1}</td> */}
+
                                                             <td>{element.classificacaoIndicativa}</td>
                                                             <td>{element.sinopse}</td>
                                                         </tr>
@@ -250,8 +256,8 @@ export default class Filmes extends Component {
                         <br></br>
                         <br></br>
                         <br></br>
-                        <Card>
-                            <Card.Header style={{ backgroundColor: "Black" }}>
+                        <Card id="Antigos">
+                            <Card.Header style={{ backgroundColor: "Black" }} >
                                 <Accordion.Toggle as={Button} variant="link" eventKey="2" style={{ color: "white" }}>
                                     Mais Antigos
                                 </Accordion.Toggle>
@@ -259,7 +265,7 @@ export default class Filmes extends Component {
                             <Accordion.Collapse eventKey="2">
                                 <Card.Body>
                                     {/* //MaisAntigos */}
-                                    <div id="Antigos">
+                                    <div >
                                         <Table striped bordered hover variant="dark">
                                             <thead>
 

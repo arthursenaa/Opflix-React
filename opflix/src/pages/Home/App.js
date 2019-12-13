@@ -34,6 +34,7 @@ class App extends Component {
         if (data.status === 200) {
           localStorage.setItem("usuario-opflix", data.data.token);
           // var permissao = parseJwt().permissao;
+          
           this.props.history.push('/Filmes');
           
         } else {

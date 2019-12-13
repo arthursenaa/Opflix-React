@@ -61,7 +61,7 @@ const routing = (
                 <RotaAdm path='/CadastroAdm' component={CadastroAdm} />
                 <RotaAdm path='/CadastrarFilme' component={CadastrarFilmes} />
                 <RotaAdm path='/CadastrarCategoria' component={CadastrarCategoria} />
-                <RotaAdm path='/Mapa' component={Mapa} />
+                <RotaLogin path='/Mapa' component={Mapa} />
                 <Route component={NaoEncontrado}/>
             </Switch>
         </div>

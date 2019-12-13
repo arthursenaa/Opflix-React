@@ -205,6 +205,7 @@ export default class CadastrarFilme extends Component {
 
                             <div className="item" style={{ marginLeft: "-30%", }}>
                                 <select style={{ width: "230%", fontSize: "0.8em" }} onChange={this.cadastroGenero} >
+                                <option disabled selected >Genero</option>
                                     {this.state.generos.map(element => {
                                         return (
                                             <option value={element.idGenero} key={element.idGenero}>{element.nome}</option>
@@ -215,6 +216,7 @@ export default class CadastrarFilme extends Component {
                             <br></br>
                             <div className="item" style={{ marginLeft: "-22%" }}>
                                 <select onChange={this.cadastroPlataforma} style={{ width: "170%", fontSize: "0.8em" }} >
+                                    <option disabled selected >Plataforma</option>
                                     {this.state.plataforma.map(element => {
                                         return (
                                             <option value={element.idPlataforma} key={element.idPlataforma}>{element.plataforma1}</option>
@@ -226,8 +228,9 @@ export default class CadastrarFilme extends Component {
 
                         {/* </div>
                         <div style={{ display: "flex", marginLeft: '-5%' }}> */}
-                            <div className="item" style={{ marginLeft: "-47%"}}>
-                                <select onChange={this.cadastroClassificacao} style={{ width: "832%", fontSize: "0.8em" }} >
+                            <div className="item" style={{ marginLeft: "-22%"}}>
+                                <select onChange={this.cadastroClassificacao} style={{width:'170%',  fontSize: "0.8em" }} >
+                                <option disabled selected >Classificação Indicativa</option>
                                     {this.state.faixaEtaria.map(element => {
                                         return (
                                             <option value={element.Classificação} key={element.Classificação}>{element.Classificação}</option>
@@ -238,6 +241,7 @@ export default class CadastrarFilme extends Component {
                             <br></br>
                             <div className="item" style={{ marginLeft: "-43%" }}>
                                 <select onChange={this.cadastroTipo} style={{ width: "535%", fontSize: "0.8em" }} >
+                                    <option disabled selected >Tipo</option>
                                     {this.state.nomeTipo.map(element => {
                                         return (
                                             <option value={element.id} key={element.id}>{element.nome}</option>

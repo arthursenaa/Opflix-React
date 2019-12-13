@@ -20,22 +20,19 @@ function Menu() {
                                 <Nav.Link href="/CadastroAdm" style={{ fontSize: "Large" }}>Cadastrar Adm </Nav.Link>
                                 <Nav.Link href="/CadastrarFilme" style={{ fontSize: "Large" }}>Cadastrar Filme </Nav.Link>
                                 <Nav.Link href="/CadastrarCategoria" style={{ fontSize: "Large" }}>Cadastrar Genero </Nav.Link>
-                                {/* <Nav.Link href="/Mapa" style={{ fontSize: "Large" }}>Localização</Nav.Link> */}
                                 <Nav.Link href="/Mapa" style={{ fontSize: "Large"}}>Localizações </Nav.Link>
-                                <Nav.Link href="/" style={{ fontSize: "Large",color:"white"}}>Logout </Nav.Link>
+                                <Nav.Link href="/" style={{ fontSize: "Large",color:"white"}} onClick={() => localStorage.removeItem('usuario-opflix')}>Logout </Nav.Link>
                             </Nav>
                         ) : (
                             <Nav className="mr-auto" >
-                                <Nav.Link href="#Filmes" style={{ fontSize: "Large" }}>Lista de Filmes</Nav.Link>
-                                <Nav.Link href="#Ultimos" style={{ fontSize: "Large" }}>Ultimos Lançamentos</Nav.Link>
-                                <Nav.Link href="#Antigos" style={{ fontSize: "Large" }}>Mais Antigos </Nav.Link>
-                                <Nav.Link href="/" style={{ fontSize: "Large"}} onClick={localStorage.removeItem('usuario-opflix')}>Logout </Nav.Link>
-                            </Nav>)
+                                <Nav.Link href="/Filmes/#Filmes" style={{ fontSize: "Large" }}>Lista de Filmes</Nav.Link>
+                                <Nav.Link href="/Filmes/#Ultimos" style={{ fontSize: "Large" }}>Ultimos Lançamentos</Nav.Link>
+                                <Nav.Link href="/Filmes/#Antigos" style={{ fontSize: "Large" }}>Mais Antigos </Nav.Link>
+                                <Nav.Link href="/Mapa" style={{ fontSize: "Large"}}>Localizações</Nav.Link>
+                                <Nav.Link href="/" style={{ fontSize: "Large",color:"white"}} onClick={() => localStorage.removeItem('usuario-opflix')}>Logout </Nav.Link>
+                            </Nav>
+                            )
                 }
-                    {/* <Nav.Link href="#Ultimos" style={{fontSize:"Large"}}>Ultimos Lançamentos</Nav.Link> */}
-                {/* <Nav.Link href="/Home">Pricing</Nav.Link> */}
-
-
             </Navbar.Collapse>
         </Navbar>
     );

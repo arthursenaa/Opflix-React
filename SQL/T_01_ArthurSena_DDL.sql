@@ -53,7 +53,7 @@ drop table Plataforma
 drop table Favorito
 drop table Lancamento
 
-select * from Genero
+select * from Usuario
 
 SELECT * FROM Lancamento WHERE Nome LIKE '%a%';
 
